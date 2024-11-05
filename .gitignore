@@ -1,0 +1,11 @@
+__pycache__
+lib
+lib64
+bin/
+include/
+.idea/
+*.egg-info/
+build/
+dist/
+addressbook.pkl
+.assistant_bot_command_history
