@@ -1,6 +1,6 @@
 from ..user_command import UserCommand
-from ...record_contact import RecordContact
-from ...fields import FieldNameValueError
+from record_contact import RecordContact
+from fields import FieldNameValueError
 # TODO Validation in class fields.field_address ->  import FieldAddressValueError
 
 
