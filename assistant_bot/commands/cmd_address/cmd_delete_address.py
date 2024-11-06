@@ -1,13 +1,14 @@
-from .user_command import UserCommand
-from record_contact import RecordContact
-from fields import FieldNameValueError, FieldPhoneValueError
+from ..user_command import UserCommand
+from ...record_contact import RecordContact
+from ...fields import FieldNameValueError
+# TODO Validation in class fields.field_address ->  import FieldAddressValueError
 
 
-class CommandDeleteContact(UserCommand):
+class CommandDeleteAddress(UserCommand):
     def __init__(self):
-        self.name = "delete-contact"
-        self.description = "The delete contact."
-        self.pattern = "delete [username]"   # self.pattern = "add [username] [phone]"
+        self.name = "delete-address"
+        self.description = "The delete address."
+        self.pattern = "delete [username]"
 
     def input_validation(self, params, book):
         if len(params) == 0:
@@ -28,11 +29,13 @@ class CommandDeleteContact(UserCommand):
             if exist_record:
                 # if contact exists remove contact by name -> 
                 # Check realisation of AddressBook method: remove_record_by_name()
-                exist_record.remove_record_by_name(name)
+                exist_record.remove_address(name)
 
-            msg = "Contact removed."
+            msg = "Address removed."
             complete = False
             return (msg, complete)
 
+        # except FieldAddressValueError as e:
+        #     return (f"Invalid address value", False)
         except FieldNameValueError as e:
             return (f"Invalid name value", False)
