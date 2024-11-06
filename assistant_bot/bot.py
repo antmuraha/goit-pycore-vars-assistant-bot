@@ -1,4 +1,5 @@
 import readline
+from colorama import Fore, Style
 from parse_input import parse_input
 from address_book import AddressBook
 from notes_book import NotesBook
@@ -21,6 +22,17 @@ address_command_list = [CommandAddContact(), CommandEditContact(), CommandDelete
 notes_command_list = []
 
 
+def get_help():
+    commands = []
+    all = common_command_list + address_command_list + notes_command_list
+    for cmd in all:
+        exist = next((x for x in commands if x[0] == cmd.pattern), None)
+        if not exist:
+            commands.append((cmd.pattern, cmd.description))
+    text = list(map(lambda cmd: f"{Fore.BLUE}{cmd[0]}{Style.RESET_ALL} - {cmd[1]}", commands))
+    return "\n".join(text)
+
+
 try:
     # Load the history from the file if it exists
     readline.read_history_file(constants.history_file)
@@ -41,6 +53,11 @@ def main():
             continue
 
         command, *args = parse_input(user_input)
+
+        if command == "help":
+            msg = get_help()
+            print(msg)
+            continue
 
         # Find the target class of the command
         book = None

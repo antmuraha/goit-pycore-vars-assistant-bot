@@ -7,7 +7,7 @@ class CommandDeletePhone(UserCommand):
     def __init__(self):
         self.name = "delete-phone"
         self.description = "The delete phone."
-        self.pattern = "delete [username] [phone]" 
+        self.pattern = "delete-phone [username] [phone]" 
 
     def input_validation(self, params, book):
         if len(params) == 0:

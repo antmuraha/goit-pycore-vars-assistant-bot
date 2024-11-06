@@ -8,7 +8,7 @@ class CommandAddAddress(UserCommand):
     def __init__(self):
         self.name = "add-address"
         self.description = "The add address."
-        self.pattern = "add [username] [address]"
+        self.pattern = "add-address [username] [address]"
 
     def input_validation(self, params, book):
         if len(params) == 0:

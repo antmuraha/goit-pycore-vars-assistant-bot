@@ -9,7 +9,7 @@ class CommandEditAddress(UserCommand):
         self.name = "edit-address"
         self.description = "The edit address."
         # TODO check edit_address() pattern
-        self.pattern = "edit [username] [new_address]"
+        self.pattern = "edit-address [username] [new_address]"
 
     def input_validation(self, params, book):
         if len(params) == 0:

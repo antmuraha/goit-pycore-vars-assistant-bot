@@ -8,7 +8,7 @@ class CommandDeleteAddress(UserCommand):
     def __init__(self):
         self.name = "delete-address"
         self.description = "The delete address."
-        self.pattern = "delete [username]"
+        self.pattern = "delete-address [username]"
 
     def input_validation(self, params, book):
         if len(params) == 0:

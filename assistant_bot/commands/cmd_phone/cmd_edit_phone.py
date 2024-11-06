@@ -7,7 +7,7 @@ class CommandEditPhone(UserCommand):
     def __init__(self):
         self.name = "edit-phone"
         self.description = "The edit phone."
-        self.pattern = "edit [username] [phone] [new_phone]"
+        self.pattern = "edit-phone [username] [phone] [new_phone]"
 
     def input_validation(self, params, book):
         if len(params) == 0:

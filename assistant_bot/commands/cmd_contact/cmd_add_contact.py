@@ -7,7 +7,7 @@ class CommandAddContact(UserCommand):
     def __init__(self):
         self.name = "add-contact"
         self.description = "The add contact."
-        self.pattern = "add [username] [phone]"
+        self.pattern = "add-contact [username] [phone]"
 
     def input_validation(self, params, book):
         if len(params) == 0:
