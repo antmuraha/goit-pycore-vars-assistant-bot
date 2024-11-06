@@ -31,11 +31,14 @@ class CommandAddPhone(UserCommand):
             exist_record = book.get(name)
             if exist_record:
                 exist_record.add_phone(phone)
-
-            msg = "Phone added."
+                msg = "Phone added."
+                complete = False
+                return (msg, complete)
+            
+            msg = 'Contact not exist'
             complete = False
             return (msg, complete)
+
         except FieldPhoneValueError as e:
             return (f"Invalid phone value", False)
-        except FieldNameValueError as e:
-            return (f"Invalid name value", False)
+

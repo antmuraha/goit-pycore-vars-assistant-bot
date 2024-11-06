@@ -31,10 +31,9 @@ class CommandDeletePhone(UserCommand):
             exist_record = book.get(name)
             if exist_record:
                 exist_record.remove_phone(phone)
-
-            msg = "Phone removed."
-            complete = False
-            return (msg, complete)
+                msg = "Phone removed."
+                complete = False
+                return (msg, complete)
 
         except FieldNameValueError as e:
             return (f"Invalid name value", False)

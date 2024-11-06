@@ -7,7 +7,7 @@ from ...fields import FieldNameValueError
 class CommandEditAddress(UserCommand):
     def __init__(self):
         self.name = "edit-address"
-        self.description = "The address contact."
+        self.description = "The edit address."
         # TODO check edit_address() pattern
         self.pattern = "edit [username] [new_address]"
 
@@ -33,10 +33,9 @@ class CommandEditAddress(UserCommand):
             exist_record = book.get(name)
             if exist_record:
                 exist_record.edit_address(new_address)
-
-            msg = "Address changed."
-            complete = False
-            return (msg, complete)
+                msg = "Address changed."
+                complete = False
+                return (msg, complete)
         # except FieldAddressValueError as e:
         #     return (f"Invalid address value", False)
         except FieldNameValueError as e:

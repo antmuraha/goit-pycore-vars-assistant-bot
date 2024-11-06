@@ -25,14 +25,14 @@ class CommandShowBirthday(UserCommand):
         try:
             exist_record = book.get(name)
             # TODO implement a show_birthday() method in RecordContact class
-            # if exist_record:
-            #     exist_record.show_birthday(name)
+            if exist_record:
+                exist_record.show_birthday(name)
+                return(exist_record.birthday, False)
 
-            # TODO decide what to write in a msg 
-            # No message is needed, but for consistency with the signature.
-            msg = " "
+            msg = "Contact not exist"
             complete = False
             return (msg, complete)
 
         except FieldNameValueError as e:
             return (f"Invalid name value", False)
+

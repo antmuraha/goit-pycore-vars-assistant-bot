@@ -25,16 +25,16 @@ class CommandEditContact(UserCommand):
         if result:
             return result
 
-        name, new_username = args
+        name, new_name = args
 
         try:
             exist_record = book.get(name)
             if exist_record:
                 # TODO No relative method neither in AddressBook nor RecordContact
-                exist_record.edit_contact(new_username)
-
-            msg = "Contact changed."
-            complete = False
-            return (msg, complete)
+                exist_record.edit_contact(new_name)
+                msg = "Contact changed."
+                complete = False
+                return (msg, complete)
+           
         except FieldNameValueError as e:
             return (f"Invalid name value", False)

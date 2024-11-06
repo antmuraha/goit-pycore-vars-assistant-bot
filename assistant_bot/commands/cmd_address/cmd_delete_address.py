@@ -27,14 +27,12 @@ class CommandDeleteAddress(UserCommand):
         try:
             exist_record = book.get(name)
             if exist_record:
-                # if contact exists remove contact by name -> 
                 # Check realisation of AddressBook method: remove_record_by_name()
                 exist_record.remove_address(name)
-
-            msg = "Address removed."
-            complete = False
-            return (msg, complete)
-
+                msg = "Address removed."
+                complete = False
+                return (msg, complete)
+            
         # except FieldAddressValueError as e:
         #     return (f"Invalid address value", False)
         except FieldNameValueError as e:

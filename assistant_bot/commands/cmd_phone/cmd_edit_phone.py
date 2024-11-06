@@ -36,10 +36,10 @@ class CommandEditPhone(UserCommand):
             exist_record = book.get(name)
             if exist_record:
                 exist_record.edit_phone(phone, new_phone)
+                msg = "Phone changed."
+                complete = False
+                return (msg, complete)
 
-            msg = "Phone changed."
-            complete = False
-            return (msg, complete)
         except FieldPhoneValueError as e:
             return (f"Invalid phone value", False)
         except FieldNameValueError as e:

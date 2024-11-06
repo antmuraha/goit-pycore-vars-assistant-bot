@@ -32,10 +32,10 @@ class CommandAddAddress(UserCommand):
             exist_record = book.get(name)
             if exist_record:
                 exist_record.add_address(address)
-
-            msg = "Address added."
-            complete = False
-            return (msg, complete)
+                msg = "Address added."
+                complete = False
+                return (msg, complete)
+            
         # except FieldAddressValueError as e:
         #     return (f"Invalid address value", False)
         except FieldNameValueError as e:

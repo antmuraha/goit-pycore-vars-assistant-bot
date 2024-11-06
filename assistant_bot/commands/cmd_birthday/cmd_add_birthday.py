@@ -31,10 +31,9 @@ class CommandAddBirthday(UserCommand):
             exist_record = book.get(name)
             if exist_record:
                 exist_record.add_birthday(birthday)
-
-            msg = "Birthday added."
-            complete = False
-            return (msg, complete)
+                msg = "Birthday added."
+                complete = False
+                return (msg, complete)
 
         except FieldNameValueError as e:
             return (f"Invalid name value", False)

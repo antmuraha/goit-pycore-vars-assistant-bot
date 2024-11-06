@@ -23,11 +23,11 @@ class CommandGetUpcomingBirthdays(UserCommand):
         number = args
 
         try:
-            print(book.get_upcoming_birthdays(number))
+            result = book.get_upcoming_birthdays(number)
+            if result:
+                return (result, False)
 
-            # TODO decide what to write in a msg 
-            # No message is needed, but for consistency with the signature.
-            msg = " "
+            msg = f"There are no birthdays in {number} days."
             complete = False
             return (msg, complete)
 
