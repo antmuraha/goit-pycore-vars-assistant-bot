@@ -1,4 +1,5 @@
 from fields import FieldName, FieldPhone, FieldBirthday
+# from fields import FieldName, FieldPhone, FieldBirthday, FieldAddress, FieldEmail
 
 
 
@@ -13,6 +14,8 @@ class RecordContact:
         self.birthday: FieldBirthday = None
         self.email = None
         self.address = None
+        # self.email: FieldEmail = None
+        # self.address: FieldAddress = None
 
     def __str__(self):
         birthday_str = f" ({self.birthday})" if self.birthday else ''
@@ -47,20 +50,23 @@ class RecordContact:
         return record
     
     def add_email(self, email): # email: FieldEmail
-        self.email = email
+        raise NotImplementedError
         # self.email = FieldEmail(email)
 
-    def edit_email(self, new_email):
-        self.email = new_email
+    def edit_email(self, new_email): # new_email: FieldEmail
+        raise NotImplementedError
+        # self.email = FieldEmail(new_email)
 
     def remove_email(self):
         self.email = None
 
-    def add_address(self, address):
-        self.address = address
+    def add_address(self, address): # address: FieldAddress
+        raise NotImplementedError
+        # self.address = FieldAddress(address)
 
-    def edit_address(self, new_address):
-        self.address = new_address
+    def edit_address(self, new_address): # new_address: FieldAddress
+        raise NotImplementedError
+        # self.address = FieldAddress(new_address)
 
     def remove_address(self):
         self.address = None
