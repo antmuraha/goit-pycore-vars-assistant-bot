@@ -8,6 +8,8 @@ from commands import CommandHello, CommandExit, CommandClose, \
     CommandAddAddress, CommandEditAddress, CommandDeleteAddress, \
     CommandAddBirthday, CommandShowBirthday, CommandGetUpcomingBirthdays, \
     CommandAddPhone, CommandEditPhone, CommandDeletePhone
+import store
+
 
 common_command_list = [CommandHello(), CommandExit(), CommandClose()]
 
@@ -64,6 +66,8 @@ def main():
                 print(msg)
             if complete:
                 readline.write_history_file(constants.history_file)
+                # Uncomment after full implementation
+                # store.save_data([addressBook, notesBook])
                 exit(0)
         else:
             print(f"Unknown command <{command}>.")
