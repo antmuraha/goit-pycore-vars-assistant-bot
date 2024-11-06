@@ -3,10 +3,10 @@ from parse_input import parse_input
 from address_book import AddressBook
 from notes_book import NotesBook
 import constants
-from commands import CommandHello, CommandExit, CommandAddContact
+from commands import CommandHello, CommandExit, CommandAddContact, CommandEditContact, CommandDeleteContact
 
 common_command_list = [CommandHello(), CommandExit()]
-address_command_list = [CommandAddContact()]
+address_command_list = [CommandAddContact(), CommandEditContact(), CommandDeleteContact()]
 notes_command_list = []
 
 
