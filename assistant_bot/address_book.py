@@ -1,6 +1,16 @@
+import typing
 from collections import UserDict
 from datetime import datetime, timedelta
 
+
+# Define the type for a single person
+class PersonCongratulation(typing.TypedDict):
+    name: str
+    congratulation_date: str
+
+
+# Define the type for a list of such dictionaries
+PeopleCongratulationList = typing.List[PersonCongratulation]
 
 class AddressBook(UserDict):
     def __init__(self):
