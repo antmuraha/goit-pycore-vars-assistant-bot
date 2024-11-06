@@ -10,6 +10,7 @@ from commands import CommandHello, CommandExit, CommandClose, \
     CommandAddBirthday, CommandShowBirthday, CommandGetUpcomingBirthdays, \
     CommandAddPhone, CommandEditPhone, CommandDeletePhone
 import store
+from text_editor import show_text_editor
 
 
 common_command_list = [CommandHello(), CommandExit(), CommandClose()]
@@ -57,6 +58,11 @@ def main():
         if command == "help":
             msg = get_help()
             print(msg)
+            continue
+
+        if command == "text-editor":
+            new_text = show_text_editor("Some text for editing...")
+            print(f"New text:", new_text)
             continue
 
         # Find the target class of the command
