@@ -4,9 +4,9 @@ from address_book import AddressBook
 from notes_book import NotesBook
 import constants
 from commands import CommandHello, CommandExit, CommandClose, \
-    CommandAddContact, CommandEditContact, CommandDeleteContact, CommandShowContact, CommandAllContacts \
-    CommandAddAddress, CommandEditAddress, CommandDeleteAddress \
-    CommandAddBirthday, CommandShowBirthday, CommandGetUpcomingBirthdays \
+    CommandAddContact, CommandEditContact, CommandDeleteContact, CommandShowContact, CommandAllContacts, \
+    CommandAddAddress, CommandEditAddress, CommandDeleteAddress, \
+    CommandAddBirthday, CommandShowBirthday, CommandGetUpcomingBirthdays, \
     CommandAddPhone, CommandEditPhone, CommandDeletePhone
 
 common_command_list = [CommandHello(), CommandExit(), CommandClose()]
