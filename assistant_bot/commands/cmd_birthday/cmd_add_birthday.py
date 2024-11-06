@@ -7,7 +7,7 @@ class CommandAddBirthday(UserCommand):
     def __init__(self):
         self.name = "add-birthday"
         self.description = "The add birthday."
-        self.pattern = "add [username] [birthday]"
+        self.pattern = "add-birthday [username] [birthday]"
 
     def input_validation(self, params, book):
         if len(params) == 0:

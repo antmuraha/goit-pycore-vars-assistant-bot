@@ -7,7 +7,7 @@ class CommandShowContact(UserCommand):
     def __init__(self):
         self.name = "show-contact"
         self.description = "The show contact."
-        self.pattern = "show [username]"
+        self.pattern = "show-contact [username]"
 
     def input_validation(self, params, book):
         if len(params) == 0:
