@@ -15,7 +15,7 @@ class RecordNote:
         return f"Note Title: {self.title}\nNote Text: {self.text}"
 
     def __repr__(self):
-        return f"RecordNote(title={self.title}, text={self.text})"
+        return f"RecordNote(title={self.title!r}, text={self.text[:30]!r})"
     
     
     
