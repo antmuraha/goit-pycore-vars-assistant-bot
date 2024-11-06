@@ -3,6 +3,7 @@ from parse_input import parse_input
 from address_book import AddressBook
 from notes_book import NotesBook
 import constants
+import store
 from commands import CommandHello, CommandExit, CommandAddContact
 
 common_command_list = [CommandHello(), CommandExit()]
@@ -55,6 +56,8 @@ def main():
                 print(msg)
             if complete:
                 readline.write_history_file(constants.history_file)
+                # Uncomment after full implementation
+                # store.save_data([addressBook, notesBook])
                 exit(0)
         else:
             print(f"Unknown command <{command}>.")
