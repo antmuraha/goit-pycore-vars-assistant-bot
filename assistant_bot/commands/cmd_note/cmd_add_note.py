@@ -7,9 +7,9 @@ class CommandAddNote(UserCommand):
     def __init__(self):
         self.name = "add-note"
         self.description = "The add note to a contact."
-        self.pattern = "add-note [username] [note]"
+        self.pattern = "add-note [title] [note]"
 
-    def input_validation(self, params):
+    def input_validation(self, params, book):
         if len(params) == 0:
             msg = self.get_enter_command_message()
             complete = False

@@ -8,7 +8,7 @@ class CommandEditNote(UserCommand):
         self.description = "Edit the text of the note."
         self.pattern = "edit-note [title] [new text]" 
 
-    def input_validation(self, params):
+    def input_validation(self, params, book):
         if len(params) == 0:
             msg = self.get_enter_command_message()
             complete = False

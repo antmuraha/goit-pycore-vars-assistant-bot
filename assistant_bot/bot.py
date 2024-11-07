@@ -1,4 +1,4 @@
-from colorama import Fore, Style
+# from colorama import Fore, Style
 from parse_input import parse_input
 from completer import completer, save_history_to_file
 from address_book import AddressBook
@@ -12,18 +12,21 @@ from commands import CommandHello, CommandExit, CommandClose, \
     CommandAddEmail, CommandEditEmail, CommandDeleteEmail, \
     CommandAddNote, CommandEditNote, CommandDeleteNote, CommandAllNotes, CommandShowNote
 import store
+from text_editor import show_text_editor
 
 
 common_command_list = [CommandHello(), CommandExit(), CommandClose()]
 
-address_command_list = [CommandAddContact(), CommandEditContact(), CommandDeleteContact(), CommandShowContact(), CommandAllContacts(),
-                        CommandAddAddress(), CommandEditAddress(), CommandDeleteAddress(),
-                        CommandAddBirthday(), CommandDeleteBirthday(), CommandShowBirthday(), CommandGetUpcomingBirthdays(),
-                        CommandAddPhone(), CommandEditPhone(), CommandDeletePhone(), CommandShowPhones(),
-                        CommandAddEmail(), CommandEditEmail(), CommandDeleteEmail(),
-                        CommandAddNote(), CommandEditNote(), CommandDeleteNote(), CommandAllNotes(), CommandShowNote()
-                        ]
-notes_command_list = []
+address_command_list = [
+        CommandAddContact(), CommandEditContact(), CommandDeleteContact(), CommandShowContact(), CommandAllContacts(),
+        CommandAddAddress(), CommandEditAddress(), CommandDeleteAddress(),
+        CommandAddBirthday(), CommandDeleteBirthday(), CommandShowBirthday(), CommandGetUpcomingBirthdays(),
+        CommandAddPhone(), CommandEditPhone(), CommandDeletePhone(), CommandShowPhones(),
+        CommandAddEmail(), CommandEditEmail(), CommandDeleteEmail(),
+        ]
+notes_command_list = [
+        CommandAddNote(), CommandEditNote(), CommandDeleteNote(), CommandAllNotes(),
+        ]
 
 
 def get_help():
@@ -74,6 +77,11 @@ def main():
         if command == "help":
             msg = get_help()
             print(msg)
+            continue
+        
+        if command == "text-editor":
+            new_text = show_text_editor("Some text for editing...")
+            print(f"New text:", new_text)
             continue
 
         # Find the target class of the command
