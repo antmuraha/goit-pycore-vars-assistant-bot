@@ -36,10 +36,8 @@ class CommandAddNote(UserCommand):
                 record.add_note(note)
                 book[name] = record
 
-            msg = "Note does not exist."
+            msg = "Note added to the contact."
             complete = False
             return (msg, complete)
-        except FieldNoteValueError:
-            return ("Invalid note value.", False)
         except FieldNameValueError:
             return ("Invalid name value.", False)
