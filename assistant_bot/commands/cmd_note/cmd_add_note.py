@@ -25,7 +25,8 @@ class CommandAddNote(UserCommand):
         if error:
             return error
 
-        title, note = args
+        title = args[0]
+        note = args[1]
 
         try:
             book.add_record(title, note)

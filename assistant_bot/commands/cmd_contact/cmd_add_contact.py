@@ -25,8 +25,9 @@ class CommandAddContact(UserCommand):
         if result:
             return result
 
-        name, phone = args
-
+        name = args[0]
+        phone = args[1]
+        
         try:
             exist_record = book.get(name)
             if exist_record:

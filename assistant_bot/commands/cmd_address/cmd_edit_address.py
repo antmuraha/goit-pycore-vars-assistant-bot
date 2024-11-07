@@ -26,7 +26,8 @@ class CommandEditAddress(UserCommand):
         if error:
             return error
 
-        name, new_address = args
+        name = args[0]
+        new_address = args[1]
 
         try:
             exist_record = book.get(name)

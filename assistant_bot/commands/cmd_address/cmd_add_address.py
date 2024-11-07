@@ -25,8 +25,9 @@ class CommandAddAddress(UserCommand):
         if error:
             return error
 
-        name, address = args
-
+        name = args[0]
+        address = args[1]
+        
         try:
             exist_record = book.get(name)
             if exist_record:
