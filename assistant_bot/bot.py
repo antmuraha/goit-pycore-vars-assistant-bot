@@ -10,20 +10,23 @@ from commands import CommandHello, CommandExit, CommandClose, \
     CommandAddBirthday, CommandDeleteBirthday, CommandShowBirthday, CommandGetUpcomingBirthdays, \
     CommandAddPhone, CommandEditPhone, CommandDeletePhone, CommandShowPhones, \
     CommandAddEmail, CommandEditEmail, CommandDeleteEmail, \
-    CommandAddNote, CommandEditNote, CommandDeleteNote, CommandAllNotes
+    CommandAddNote, CommandEditNote, CommandDeleteNote, CommandAllNotes, CommandShowNote
 import store
 from text_editor import show_text_editor
 
 
 common_command_list = [CommandHello(), CommandExit(), CommandClose()]
 
-address_command_list = [CommandAddContact(), CommandEditContact(), CommandDeleteContact(), CommandShowContact(), CommandAllContacts(),
-                        CommandAddAddress(), CommandEditAddress(), CommandDeleteAddress(),
-                        CommandAddBirthday(), CommandDeleteBirthday(), CommandShowBirthday(), CommandGetUpcomingBirthdays(),
-                        CommandAddPhone(), CommandEditPhone(), CommandDeletePhone(), CommandShowPhones(),
-                        CommandAddEmail(), CommandEditEmail(), CommandDeleteEmail(),                        
-                        ]
-notes_command_list = [CommandAddNote(), CommandEditNote(), CommandDeleteNote(), CommandAllNotes()]
+address_command_list = [
+        CommandAddContact(), CommandEditContact(), CommandDeleteContact(), CommandShowContact(), CommandAllContacts(),
+        CommandAddAddress(), CommandEditAddress(), CommandDeleteAddress(),
+        CommandAddBirthday(), CommandDeleteBirthday(), CommandShowBirthday(), CommandGetUpcomingBirthdays(),
+        CommandAddPhone(), CommandEditPhone(), CommandDeletePhone(), CommandShowPhones(),
+        CommandAddEmail(), CommandEditEmail(), CommandDeleteEmail(),
+        ]
+notes_command_list = [
+        CommandAddNote(), CommandEditNote(), CommandDeleteNote(), CommandAllNotes(),
+        ]
 
 
 def get_help():

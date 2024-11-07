@@ -5,7 +5,7 @@ python -m venv .
 
 source bin/activate
 
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 ### Running a assistant bot
