@@ -1,4 +1,4 @@
-from colorama import Fore, Style
+# from colorama import Fore, Style
 from parse_input import parse_input
 from completer import completer, save_history_to_file
 from address_book import AddressBook
