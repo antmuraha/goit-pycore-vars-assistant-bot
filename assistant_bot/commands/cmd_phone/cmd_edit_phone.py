@@ -51,4 +51,4 @@ class CommandEditPhone(UserCommand):
             return (msg, complete)
 
         except FieldPhoneValueError as e:
-            return (f"Invalid phone value", False)
+            return (f"Invalid phone value. {e}", False)

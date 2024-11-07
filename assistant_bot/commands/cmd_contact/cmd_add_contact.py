@@ -40,7 +40,7 @@ class CommandAddContact(UserCommand):
             complete = False
             return (msg, complete)
         except FieldPhoneValueError as e:
-            return (f"Invalid phone value", False)
+            return (f"Invalid phone value. {e}", False)
         except FieldNameValueError as e:
             return (f"Invalid name value", False)
  
