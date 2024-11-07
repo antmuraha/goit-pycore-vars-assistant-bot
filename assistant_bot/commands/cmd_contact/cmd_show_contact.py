@@ -1,5 +1,6 @@
 from ..user_command import UserCommand
 from address_book import AddressBook
+from print_table import PrintTable
 
 
 class CommandShowContact(UserCommand):
@@ -23,7 +24,16 @@ class CommandShowContact(UserCommand):
 
         exist_record = book.find_by_name(name)
         if exist_record:
-            return (f'{exist_record}', False)
+            headers=["Name", "Phone", "Email", "Address", "Birthday"]
+            rows = [
+                f"{exist_record.name}",
+                ", ".join(exist_record.show_phones()),
+                f"{exist_record.email}",
+                f"{exist_record.address}",
+                f"{exist_record.birthday}"
+                ]
+            table = PrintTable(headers = headers, rows = rows)
+            return (table, False)
 
         msg = "Contact not exist"
         complete = False
