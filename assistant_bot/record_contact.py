@@ -33,9 +33,10 @@ class RecordContact:
         
     def show_birthday(self):
         if self.birthday:
-            return self.birthday.strftime("%d-%m-%Y")
-        else:
-            return "You haven't added a birthday yet."
+            return self.birthday.value
+        
+    def delete_birthday(self):
+        self.birthday = None
 
     def remove_phone(self, phone: str):
         self.phones = list(filter(lambda p: p.value != phone, self.phones))

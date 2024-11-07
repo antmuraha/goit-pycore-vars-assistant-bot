@@ -14,7 +14,7 @@ class FieldBirthday(Field):
             return datetime.strptime(value, FieldBirthday.date_format).date()
         except Exception as e:
             raise FieldBirthdayValueError(
-                f"Required format {FieldBirthday.date_format}")
+                f"Required format DD.MM.YYYY")
 
 
 class FieldBirthdayValueError(Exception):
