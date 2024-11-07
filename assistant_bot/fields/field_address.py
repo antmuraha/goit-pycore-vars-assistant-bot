@@ -13,7 +13,7 @@ class FieldAddress(Field):
 
         if len(value) <= min_value_length:
             raise FieldAddressValueError(
-                f"Incorrect address format.\nThe length of the address must not be shorter than {min_value_length} characters.")
+                f"The length of the address must not be shorter than {min_value_length} characters.")
 
         return value
 

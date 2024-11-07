@@ -9,7 +9,9 @@ from commands import CommandHello, CommandExit, CommandClose, \
     CommandAddContact, CommandEditContact, CommandDeleteContact, CommandShowContact, CommandAllContacts, \
     CommandAddAddress, CommandEditAddress, CommandDeleteAddress, \
     CommandAddBirthday, CommandDeleteBirthday, CommandShowBirthday, CommandGetUpcomingBirthdays, \
-    CommandAddPhone, CommandEditPhone, CommandDeletePhone, CommandShowPhones
+    CommandAddPhone, CommandEditPhone, CommandDeletePhone, CommandShowPhones, \
+    CommandAddEmail, CommandEditEmail, CommandDeleteEmail, \
+    CommandAddNote, CommandEditNote, CommandDeleteNote, CommandAllNotes
 import store
 
 
@@ -18,7 +20,9 @@ common_command_list = [CommandHello(), CommandExit(), CommandClose()]
 address_command_list = [CommandAddContact(), CommandEditContact(), CommandDeleteContact(), CommandShowContact(), CommandAllContacts(),
                         CommandAddAddress(), CommandEditAddress(), CommandDeleteAddress(),
                         CommandAddBirthday(), CommandDeleteBirthday(), CommandShowBirthday(), CommandGetUpcomingBirthdays(),
-                        CommandAddPhone(), CommandEditPhone(), CommandDeletePhone(), CommandShowPhones()
+                        CommandAddPhone(), CommandEditPhone(), CommandDeletePhone(), CommandShowPhones(),
+                        CommandAddEmail(), CommandEditEmail(), CommandDeleteEmail(),
+                        CommandAddNote(), CommandEditNote(), CommandDeleteNote(), CommandAllNotes()
                         ]
 notes_command_list = []
 
