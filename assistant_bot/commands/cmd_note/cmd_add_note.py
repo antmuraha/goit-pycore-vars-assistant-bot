@@ -9,7 +9,7 @@ class CommandAddNote(UserCommand):
         self.description = "The add note to a contact."
         self.pattern = "add-note [username] [note]"
 
-    def input_validation(self, params):
+    def input_validation(self, params, book):
         if len(params) == 0:
             msg = self.get_enter_command_message()
             complete = False
@@ -25,14 +25,14 @@ class CommandAddNote(UserCommand):
         if error:
             return error
 
-        title = args[0]
+        username = args[0]
         note = args[1]
 
         try:
-            book.add_record(title, note)
+            book.add_record(username, note)
 
             msg = "Note added to the notebook."
             complete = False
             return (msg, complete)
         except FieldNameValueError:
-            return ("Invalid title or text value.", False)
+            return ("Invalid username or text value.", False)

@@ -21,10 +21,9 @@ address_command_list = [CommandAddContact(), CommandEditContact(), CommandDelete
                         CommandAddAddress(), CommandEditAddress(), CommandDeleteAddress(),
                         CommandAddBirthday(), CommandDeleteBirthday(), CommandShowBirthday(), CommandGetUpcomingBirthdays(),
                         CommandAddPhone(), CommandEditPhone(), CommandDeletePhone(), CommandShowPhones(),
-                        CommandAddEmail(), CommandEditEmail(), CommandDeleteEmail(),
-                        CommandAddNote(), CommandEditNote(), CommandDeleteNote(), CommandAllNotes()
+                        CommandAddEmail(), CommandEditEmail(), CommandDeleteEmail(),                        
                         ]
-notes_command_list = []
+notes_command_list = [CommandAddNote(), CommandEditNote(), CommandDeleteNote(), CommandAllNotes()]
 
 
 def get_help():

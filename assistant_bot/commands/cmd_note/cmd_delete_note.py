@@ -8,7 +8,7 @@ class CommandDeleteNote(UserCommand):
         self.description = "Delete the note."
         self.pattern = "delete-note [title]" 
 
-    def input_validation(self, params):
+    def input_validation(self, params, book):
         if len(params) == 0:
             msg = self.get_enter_command_message()
             complete = False
