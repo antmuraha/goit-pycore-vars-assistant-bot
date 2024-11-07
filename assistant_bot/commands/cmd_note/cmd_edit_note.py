@@ -1,5 +1,5 @@
 from ..user_command import UserCommand
-from fields import FieldTitleValueError
+from fields import FieldTitleValueError, FieldTextValueError
 
 
 class CommandEditNote(UserCommand):
@@ -29,5 +29,7 @@ class CommandEditNote(UserCommand):
                 complete = False
                 return (msg, complete)
         except FieldTitleValueError as e:
-            return (f"Invalid title or text value", False)
+            return (f"Invalid title value", False)
+        except FieldTextValueError as e:
+            return (f"Invalid text value", False)
     
