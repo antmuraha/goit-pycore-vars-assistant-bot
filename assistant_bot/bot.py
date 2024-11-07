@@ -3,6 +3,7 @@ from colorama import Fore, Style
 from parse_input import parse_input
 from address_book import AddressBook
 from notes_book import NotesBook
+from print_table import PrintTable
 import constants
 from commands import CommandHello, CommandExit, CommandClose, \
     CommandAddContact, CommandEditContact, CommandDeleteContact, CommandShowContact, CommandAllContacts, \
@@ -80,7 +81,10 @@ def main():
         if cmd:
             msg, complete = cmd.execute(args, book)
             if msg:
-                print(msg)
+                if isinstance(msg, PrintTable):
+                    msg.show()
+                else:
+                    print(msg)
             if complete:
                 readline.write_history_file(constants.history_file)
                 # Uncomment after full implementation
