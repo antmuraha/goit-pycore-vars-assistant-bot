@@ -1,6 +1,6 @@
 from ..user_command import UserCommand
 from record_contact import RecordContact
-from fields import FieldNameValueError
+from fields import FieldNameValueError, FieldBirthdayValueError
 
 
 class CommandAddBirthday(UserCommand):
@@ -21,9 +21,9 @@ class CommandAddBirthday(UserCommand):
             return (msg, complete)
 
     def execute(self, args, book):
-        result = self.input_validation(args, book)
-        if result:
-            return result
+        error = self.input_validation(args, book)
+        if error:
+            return error
 
         name, birthday = args
 
@@ -35,5 +35,11 @@ class CommandAddBirthday(UserCommand):
                 complete = False
                 return (msg, complete)
 
+            msg = "Contact with this name does not exist yet."
+            complete = False
+            return (msg, complete)
+
         except FieldNameValueError as e:
             return (f"Invalid name value", False)
+        except FieldBirthdayValueError as e:
+            return (f"Invalid birthday value. {e}", False)
