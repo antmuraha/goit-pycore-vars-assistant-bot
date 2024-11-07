@@ -1,6 +1,7 @@
 import typing
 from collections import UserDict
 from datetime import datetime, timedelta
+from record_contact import RecordContact
 
 
 # Define the type for a single person
@@ -12,7 +13,7 @@ class PersonCongratulation(typing.TypedDict):
 # Define the type for a list of such dictionaries
 PeopleCongratulationList = typing.List[PersonCongratulation]
 
-class AddressBook(UserDict):
+class AddressBook(UserDict[RecordContact]):
     def __init__(self):
         self.data = {}
         self.forward_days = 7
@@ -40,9 +41,9 @@ class AddressBook(UserDict):
         else:
             print("No record with the specified name was found.")
 
-    def find_by_name(self, name):
+    def find_by_name(self, name: str) -> RecordContact | None:
         '''Searches for a record by name.'''
-        return self.data.get(name, "No record with this name was found.")
+        return self.data.get(name)
 
     def find_by_email(self, email):
         '''Searches for a record by email.'''

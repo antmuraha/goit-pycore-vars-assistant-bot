@@ -7,7 +7,7 @@ import constants
 from commands import CommandHello, CommandExit, CommandClose, \
     CommandAddContact, CommandEditContact, CommandDeleteContact, CommandShowContact, CommandAllContacts, \
     CommandAddAddress, CommandEditAddress, CommandDeleteAddress, \
-    CommandAddBirthday, CommandShowBirthday, CommandGetUpcomingBirthdays, \
+    CommandAddBirthday, CommandDeleteBirthday, CommandShowBirthday, CommandGetUpcomingBirthdays, \
     CommandAddPhone, CommandEditPhone, CommandDeletePhone
 import store
 
@@ -16,7 +16,7 @@ common_command_list = [CommandHello(), CommandExit(), CommandClose()]
 
 address_command_list = [CommandAddContact(), CommandEditContact(), CommandDeleteContact(), CommandShowContact(), CommandAllContacts(),
                         CommandAddAddress(), CommandEditAddress(), CommandDeleteAddress(),
-                        CommandAddBirthday(), CommandShowBirthday(), CommandGetUpcomingBirthdays(),
+                        CommandAddBirthday(), CommandDeleteBirthday(), CommandShowBirthday(), CommandGetUpcomingBirthdays(),
                         CommandAddPhone(), CommandEditPhone(), CommandDeletePhone()
                         ]
 notes_command_list = []
