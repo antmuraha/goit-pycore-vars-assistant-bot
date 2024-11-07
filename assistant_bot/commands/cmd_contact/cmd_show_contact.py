@@ -35,7 +35,7 @@ class CommandShowContact(UserCommand):
             table = PrintTable(headers = headers, rows = rows)
             return (table, False)
 
-        msg = "Contact not exist"
+        msg = "Contact doesn't exist"
         complete = False
         return (msg, complete)
 
