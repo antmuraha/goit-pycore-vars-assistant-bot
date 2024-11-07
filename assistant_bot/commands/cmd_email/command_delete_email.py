@@ -1,0 +1,1 @@
+class CommandDeleteEmail(UserCommand):
