@@ -15,7 +15,7 @@ class CommandEditNote(UserCommand):
             return (msg, complete)
 
     def execute(self, args, book):
-        error = self.input_validation(args, book)
+        error = self.input_validation(args)
         if error:
             return error
 

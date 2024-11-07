@@ -7,7 +7,7 @@ class CommandAllNotes(UserCommand):
         self.description = "Display all notes for all contacts."
         self.pattern = "all-notes"
 
-    def execute(self, args, book):
+    def execute(self, book):
         all_notes = []
 
         for record in book.values():
