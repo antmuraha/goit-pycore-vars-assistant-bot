@@ -1,10 +1,9 @@
-import readline
 from colorama import Fore, Style
 from parse_input import parse_input
+from completer import completer, save_history_to_file
 from address_book import AddressBook
 from notes_book import NotesBook
 from print_table import PrintTable
-import constants
 from commands import CommandHello, CommandExit, CommandClose, \
     CommandAddContact, CommandEditContact, CommandDeleteContact, CommandShowContact, CommandAllContacts, \
     CommandAddAddress, CommandEditAddress, CommandDeleteAddress, \
@@ -34,16 +33,19 @@ def get_help():
         exist = next((x for x in commands if x[0] == cmd.pattern), None)
         if not exist:
             commands.append((cmd.pattern, cmd.description))
-    text = list(map(lambda cmd: f"{Fore.BLUE}{cmd[0]}{Style.RESET_ALL} - {cmd[1]}", commands))
+    text = list(
+        map(lambda cmd: f"{Fore.BLUE}{cmd[0]}{Style.RESET_ALL} - {cmd[1]}", commands))
     return "\n".join(text)
 
 
-try:
-    # Load the history from the file if it exists
-    readline.read_history_file(constants.history_file)
-except FileNotFoundError:
-    # If no history file exists, it will be created when commands are saved
-    pass
+def get_all_commands():
+    commands = ["help"]
+    all = common_command_list + address_command_list + notes_command_list
+    for cmd in all:
+        exist = next((x for x in commands if x == cmd.pattern), None)
+        if not exist:
+            commands.append(cmd.pattern)
+    return commands
 
 
 def main():
@@ -62,7 +64,7 @@ def main():
 
     print("Welcome to the assistant bot!")
     while True:
-        user_input = input("Enter a command: ")
+        user_input = completer(get_all_commands())
         if not len(user_input.strip()):
             print("Please enter a command.")
             continue
@@ -100,9 +102,9 @@ def main():
                 else:
                     print(msg)
             if complete:
-                readline.write_history_file(constants.history_file)
                 # Uncomment after full implementation
                 # store.save_data([addressBook, notesBook])
+                save_history_to_file()
                 exit(0)
         else:
             print(f"Unknown command <{command}>.")
