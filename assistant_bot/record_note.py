@@ -1,4 +1,4 @@
-# from fields import FieldTitle, FieldText
+from fields import FieldTitle, FieldText
 
 class RecordNote:
     '''
@@ -6,10 +6,8 @@ class RecordNote:
     '''
 
     def __init__(self, title, text):
-        self.title = title
-        self.text = text
-        # self.title = FieldTitle(title)
-        # self.text = FieldText(text)
+        self.title = FieldTitle(title)
+        self.text = FieldText(text)
 
     def __str__(self):
         return f"Note Title: {self.title}\nNote Text: {self.text}"
