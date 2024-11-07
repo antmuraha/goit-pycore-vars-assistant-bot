@@ -1,5 +1,5 @@
 from ..user_command import UserCommand
-from fields import FieldNameValueError
+from fields import FieldText
 
 class CommandAllNotes(UserCommand):
     def __init__(self):

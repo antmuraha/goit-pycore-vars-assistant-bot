@@ -1,7 +1,7 @@
 from ..user_command import UserCommand
 from record_contact import RecordContact
 from fields import FieldNameValueError
-from field_note import FieldNoteValueError
+from fields import FieldText
 
 class CommandAddNote(UserCommand):
     def __init__(self):
