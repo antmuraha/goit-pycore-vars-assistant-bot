@@ -57,8 +57,17 @@ class AddressBook(UserDict):
             if hasattr(record, 'phones') and phone in [p.value for p in record.phones]:
                 return record
         return "No record found with this phone number."
+    
+    def edit_contact(self, name, new_name):
+        raise NotImplementedError
 
-    def get_upcoming_birthdays(self) -> PeopleCongratulationList:
+    def show_birthday(self, name):
+        raise NotImplementedError
+
+    def remove_record_by_name(self, name):
+        raise NotImplementedError
+
+    def show_upcoming_birthday(self) -> PeopleCongratulationList:
         upcoming: PeopleCongratulationList = []
         for name in self.data:
             record = self.data[name]
