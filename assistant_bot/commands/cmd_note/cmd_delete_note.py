@@ -13,7 +13,7 @@ class CommandDeleteNote(UserCommand):
             msg = self.get_enter_command_message()
             complete = False
             return (msg, complete)
-
+       
     def execute(self, args, book):
         error = self.input_validation(args, book)
         if error:
@@ -24,10 +24,15 @@ class CommandDeleteNote(UserCommand):
         try:
             exist_record = book.get(title)
             if exist_record:
-                book.remove_record(title)
+                del book[title]
+                # book.remove_record(title)
                 msg = "Note removed."
                 complete = False
                 return (msg, complete)
+            
+            msg = "Note does not exist"
+            complete = False
+            return (msg, complete)
         except FieldTitleValueError as e:
             return (f"Invalid title value", False)
     
