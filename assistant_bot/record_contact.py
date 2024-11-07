@@ -21,6 +21,10 @@ class RecordContact:
 
     def __repr__(self):
         return f"Record: \"{self}\""
+    
+    def rename(self, new_name):
+        self.name = FieldName(new_name)
+        return self.name.value == new_name
 
     def add_phone(self, phone: str):
         if not self.find_phone(phone):
