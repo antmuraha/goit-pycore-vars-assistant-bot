@@ -1,6 +1,7 @@
 from ..user_command import UserCommand
 from record_contact import RecordContact
 from fields import FieldNameValueError, FieldPhoneValueError
+from address_book import AddressBook
 
 
 class CommandAddPhone(UserCommand):
@@ -20,10 +21,10 @@ class CommandAddPhone(UserCommand):
             complete = False
             return (msg, complete)
 
-    def execute(self, args, book):
-        result = self.input_validation(args, book)
-        if result:
-            return result
+    def execute(self, args, book: AddressBook):
+        error = self.input_validation(args, book)
+        if error:
+            return error
 
         name, phone = args
 
@@ -40,5 +41,5 @@ class CommandAddPhone(UserCommand):
             return (msg, complete)
 
         except FieldPhoneValueError as e:
-            return (f"Invalid phone value", False)
+            return (f"Invalid phone value. {e}", False)
 
