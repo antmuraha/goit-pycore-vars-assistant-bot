@@ -1,6 +1,7 @@
 from ..user_command import UserCommand
 from record_contact import RecordContact
-from fields import FieldNameValueError
+from fields import FieldName, FieldNameValueError
+from address_book import AddressBook
 
 
 class CommandEditContact(UserCommand):
@@ -20,21 +21,28 @@ class CommandEditContact(UserCommand):
             complete = False
             return (msg, complete)
 
-    def execute(self, args, book):
+    def execute(self, args, book: AddressBook):
         result = self.input_validation(args, book)
         if result:
             return result
 
-        name, new_name = args
+        name = args[0]
+        new_name = args[1]
 
         try:
-            exist_record = book.get(name)
+            exist_record = book.find_by_name(name)
             if exist_record:
-                # TODO No relative method neither in AddressBook nor RecordContact
-                exist_record.edit_contact(new_name)
-                msg = "Contact changed."
-                complete = False
-                return (msg, complete)
-           
+                renamed = exist_record.rename(new_name)
+                if renamed:
+                    book[new_name] = book[name]
+                    del book[name]
+                    msg = "Contact renamed."
+                    complete = False
+                    return (msg, complete)
+
+            msg = "Contact not exist."
+            complete = False
+            return (msg, complete)
+
         except FieldNameValueError as e:
-            return (f"Invalid name value", False)
+            return (f"{e}", False)

@@ -1,6 +1,5 @@
 from ..user_command import UserCommand
-from record_contact import RecordContact
-from fields import FieldNameValueError, FieldPhoneValueError
+from address_book import AddressBook
 
 
 class CommandShowContact(UserCommand):
@@ -15,14 +14,14 @@ class CommandShowContact(UserCommand):
             complete = False
             return (msg, complete)
 
-    def execute(self, args, book):
-        result = self.input_validation(args, book)
-        if result:
-            return result
+    def execute(self, args, book: AddressBook):
+        error = self.input_validation(args, book)
+        if error:
+            return error
 
-        name = args
+        name = args[0]
 
-        exist_record = book.get(name)
+        exist_record = book.find_by_name(name)
         if exist_record:
             return (f'{exist_record}', False)
 

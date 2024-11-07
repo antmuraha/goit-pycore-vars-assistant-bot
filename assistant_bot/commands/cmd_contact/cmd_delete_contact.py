@@ -1,6 +1,5 @@
 from ..user_command import UserCommand
-from record_contact import RecordContact
-from fields import FieldNameValueError
+from address_book import AddressBook
 
 
 class CommandDeleteContact(UserCommand):
@@ -15,22 +14,20 @@ class CommandDeleteContact(UserCommand):
             complete = False
             return (msg, complete)
 
-    def execute(self, args, book):
-        result = self.input_validation(args, book)
-        if result:
-            return result
+    def execute(self, args, book: AddressBook):
+        error = self.input_validation(args, book)
+        if error:
+            return error
 
-        name = args
+        name = args[0]
 
-        try:
-            exist_record = book.get(name)
-            if exist_record:
-                # Check realisation of AddressBook method: remove_record_by_name()
-                exist_record.remove_record_by_name(name)
-                msg = "Contact removed."
-                complete = False
-                return (msg, complete)
-          
-        except FieldNameValueError as e:
-            return (f"Invalid name value", False)
+        exist_record = book.find_by_name(name)
+        if exist_record:
+            del book[name]
+            msg = "Contact removed."
+            complete = False
+            return (msg, complete)
         
+        msg = "Contact not exist."
+        complete = False
+        return (msg, complete)
