@@ -2,11 +2,11 @@ from address_book import AddressBook
 from ..user_command import UserCommand
 
 
-class CommandShowBirthday(UserCommand):
+class CommandDeleteBirthday(UserCommand):
     def __init__(self):
-        self.name = "show-birthday"
-        self.description = "The show birthday."
-        self.pattern = "show-birthday [username]"
+        self.name = "delete-birthday"
+        self.description = "The delete birthday."
+        self.pattern = "delete-birthday [username]"
 
     def input_validation(self, params, book):
         if len(params) == 0:
@@ -25,7 +25,8 @@ class CommandShowBirthday(UserCommand):
         if exist_record:
             value = exist_record.show_birthday()
             if value:
-                return (value, False)
+                exist_record.delete_birthday()
+                return (f"Birthday value has been removed", False)
 
             msg = "You haven't added a birthday yet."
             complete = False
