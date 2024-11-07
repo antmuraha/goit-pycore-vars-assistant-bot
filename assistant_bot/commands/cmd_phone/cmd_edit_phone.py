@@ -1,6 +1,7 @@
 from ..user_command import UserCommand
 from record_contact import RecordContact
 from fields import FieldNameValueError, FieldPhoneValueError
+from address_book import AddressBook
 
 
 class CommandEditPhone(UserCommand):
@@ -25,22 +26,29 @@ class CommandEditPhone(UserCommand):
             complete = False
             return (msg, complete)
 
-    def execute(self, args, book):
-        result = self.input_validation(args, book)
-        if result:
-            return result
+    def execute(self, args, book: AddressBook):
+        error = self.input_validation(args, book)
+        if error:
+            return error
 
         name, phone, new_phone = args
 
         try:
-            exist_record = book.get(name)
+            exist_record = book.find_by_name(name)
             if exist_record:
-                exist_record.edit_phone(phone, new_phone)
-                msg = "Phone changed."
+                result = exist_record.edit_phone(phone, new_phone)
+                if result:
+                    msg = "Phone changed."
+                    complete = False
+                    return (msg, complete)
+                
+                msg = "The phone does not exist."
                 complete = False
                 return (msg, complete)
+            
+            msg = "Contact not exist"
+            complete = False
+            return (msg, complete)
 
         except FieldPhoneValueError as e:
             return (f"Invalid phone value", False)
-        except FieldNameValueError as e:
-            return (f"Invalid name value", False)

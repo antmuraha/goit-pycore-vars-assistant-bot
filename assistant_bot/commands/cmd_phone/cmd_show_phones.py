@@ -4,20 +4,15 @@ from fields import FieldNameValueError
 from address_book import AddressBook
 
 
-class CommandDeletePhone(UserCommand):
+class CommandShowPhones(UserCommand):
     def __init__(self):
-        self.name = "delete-phone"
-        self.description = "The delete phone."
-        self.pattern = "delete-phone [username] [phone]" 
+        self.name = "show-phones"
+        self.description = "The show all phones."
+        self.pattern = "show-phones [username]"
 
     def input_validation(self, params, book):
         if len(params) == 0:
             msg = self.get_enter_command_message()
-            complete = False
-            return (msg, complete)
-        
-        if len(params) == 1:
-            msg = "Please enter a phone."
             complete = False
             return (msg, complete)
 
@@ -26,20 +21,15 @@ class CommandDeletePhone(UserCommand):
         if error:
             return error
 
-        name, phone = args
+        name, = args
 
         exist_record = book.find_by_name(name)
         if exist_record:
-            removed = exist_record.remove_phone(phone)
-            if removed:
-                msg = "Phone removed."
-                complete = False
-                return (msg, complete)
-            
-            msg = "Phone not exist."
+            phones = exist_record.show_phones()
+            msg = ", ".join(phones)
             complete = False
             return (msg, complete)
-        
+
         msg = "Contact not exist"
         complete = False
         return (msg, complete)

@@ -38,8 +38,10 @@ class RecordContact:
     def delete_birthday(self):
         self.birthday = None
 
-    def remove_phone(self, phone: str):
+    def remove_phone(self, phone: str) -> bool:
+        count = len(self.phones)
         self.phones = list(filter(lambda p: p.value != phone, self.phones))
+        return len(self.phones) != count
 
     def edit_phone(self, phone: FieldPhone, new_phone: FieldPhone):
         record = next(
@@ -48,11 +50,17 @@ class RecordContact:
         if record:
             record.value = new_phone
 
+        return record
+
     def find_phone(self, phone: FieldPhone) -> FieldPhone | None:
         record = next(
             (x for x in self.phones if x.value == phone), None)
 
         return record
+
+    def show_phones(self):
+        '''Show all phones'''
+        return [p.value for p in self.phones]
     
     def add_email(self, email: FieldEmail):  
         self.email = FieldEmail(email)
