@@ -18,8 +18,9 @@ class CommandEditNote(UserCommand):
         error = self.input_validation(args, book)
         if error:
             return error
-        
-        title, text = args
+
+        title = args[0]
+        text = args[1]
 
         try:
             exist_record = book.get(title)

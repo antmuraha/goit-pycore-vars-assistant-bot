@@ -23,7 +23,8 @@ class CommandAddEmail(UserCommand):
         if error:
             return error
 
-        name, email = args
+        name = args[0]
+        email = args[1]
 
         try:
             exist_record = book.get(name)

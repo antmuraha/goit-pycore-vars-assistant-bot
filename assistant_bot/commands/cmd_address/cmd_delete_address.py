@@ -22,7 +22,7 @@ class CommandDeleteAddress(UserCommand):
         if result:
             return result
 
-        name = args
+        name = args[0]
 
         try:
             exist_record = book.get(name)

@@ -27,7 +27,8 @@ class CommandEditAddress(UserCommand):
         if result:
             return result
 
-        name, new_address = args
+        name = args[0]
+        new_address = args[1]
 
         try:
             exist_record = book.get(name)
