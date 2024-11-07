@@ -25,13 +25,13 @@ class CommandShowContact(UserCommand):
         exist_record = book.find_by_name(name)
         if exist_record:
             headers=["Name", "Phone", "Email", "Address", "Birthday"]
-            rows = [
+            rows = [[
                 f"{exist_record.name}",
                 ", ".join(exist_record.show_phones()),
                 f"{exist_record.email}",
                 f"{exist_record.address}",
                 f"{exist_record.birthday}"
-                ]
+                ]]
             table = PrintTable(headers = headers, rows = rows)
             return (table, False)
 

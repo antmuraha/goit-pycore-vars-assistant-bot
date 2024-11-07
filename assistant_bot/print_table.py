@@ -1,3 +1,6 @@
+from rich.console import Console
+from rich.table import Table
+
 
 class PrintTable():
     def __init__(self, headers: list[str], rows: list[list[str]]):
@@ -5,5 +8,11 @@ class PrintTable():
         self.rows = rows
 
     def show(self):
-        print("Headers:", self.headers)
-        print("Rows:", self.rows)
+        table = Table()
+        for header in self.headers:
+            table.add_column(header, style="magenta")
+        for row in self.rows:
+            table.add_row(*row)
+        console = Console()
+        console.print(table)
+        
