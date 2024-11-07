@@ -15,7 +15,6 @@ class CommandDeleteContact(UserCommand):
             complete = False
             return (msg, complete)
 
-
     def execute(self, args, book):
         result = self.input_validation(args, book)
         if result:
