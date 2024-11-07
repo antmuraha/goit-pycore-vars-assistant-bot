@@ -23,7 +23,7 @@ class CommandGetUpcomingBirthdays(UserCommand):
         number = args
 
         try:
-            result = book.get_upcoming_birthdays(number)
+            result = book.show_upcoming_birthday(number)
             if result:
                 return (result, False)
 

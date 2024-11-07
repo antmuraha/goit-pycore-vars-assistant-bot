@@ -1,19 +1,19 @@
-from fields import FieldTitle, FieldText
+from fields import FieldText
 
 class RecordNote:
     '''
-    A class to store information about a note, including title and text.
+    A class to store information about a note, including text.
     '''
 
-    def __init__(self, title, text):
-        self.title = FieldTitle(title)
+    def __init__(self, text):
         self.text = FieldText(text)
 
     def __str__(self):
-        return f"Note Title: {self.title}\nNote Text: {self.text}"
+        return f"Note text: {self.text}"
 
     def __repr__(self):
-        return f"RecordNote(title={self.title!r}, text={self.text[:30]!r})"
+        return f"RecordNote(text={self.text[:30]!r})"
     
-    
+    def edit_text(self, new_text):
+        self.text = new_text
     
