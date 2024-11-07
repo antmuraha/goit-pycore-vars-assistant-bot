@@ -8,7 +8,8 @@ from commands import CommandHello, CommandExit, CommandClose, \
     CommandAddContact, CommandEditContact, CommandDeleteContact, CommandShowContact, CommandAllContacts, \
     CommandAddAddress, CommandEditAddress, CommandDeleteAddress, \
     CommandAddBirthday, CommandShowBirthday, CommandGetUpcomingBirthdays, \
-    CommandAddPhone, CommandEditPhone, CommandDeletePhone
+    CommandAddPhone, CommandEditPhone, CommandDeletePhone, \
+    CommandShowNote
 import store
 
 
@@ -19,7 +20,7 @@ address_command_list = [CommandAddContact(), CommandEditContact(), CommandDelete
                         CommandAddBirthday(), CommandShowBirthday(), CommandGetUpcomingBirthdays(),
                         CommandAddPhone(), CommandEditPhone(), CommandDeletePhone()
                         ]
-notes_command_list = []
+notes_command_list = [CommandShowNote()]
 
 
 def get_help():
