@@ -32,12 +32,12 @@ class CommandAddAddress(UserCommand):
             if exist_record:
                 exist_record.add_address(address)
                 msg = "Address added to the contact."
-                complete = False
-                return (msg, complete)
             else: 
                 msg = "Please create the contact before adding an address."
             
+            complete = False
+            return (msg, complete)
         except FieldAddressValueError as e:
-            return (f"Invalid address value", False)
+            return (f"Invalid address value. {e}", False)
         except FieldNameValueError as e:
-            return (f"Invalid name value", False)
+            return (f"Invalid name value. {e}", False)

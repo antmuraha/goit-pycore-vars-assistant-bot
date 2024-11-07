@@ -35,7 +35,7 @@ class CommandAddEmail(UserCommand):
             
             complete = False
             return (msg, complete)
-        except FieldNameValueError:
-            return ("Invalid name value.", False)
-        except FieldEmailValueError:
-            return ("Invalid email value.", False)
+        except FieldNameValueError as e:
+            return ("Invalid name value. {e}", False)
+        except FieldEmailValueError as e:
+            return ("Invalid email value. {e}", False)
