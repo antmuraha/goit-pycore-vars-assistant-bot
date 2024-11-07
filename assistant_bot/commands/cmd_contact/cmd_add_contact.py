@@ -25,8 +25,9 @@ class CommandAddContact(UserCommand):
         if result:
             return result
 
-        name, phone = args
-
+        name = args[0]
+        phone = args[1]
+        
         try:
             exist_record = book.get(name)
             if exist_record:
@@ -40,7 +41,7 @@ class CommandAddContact(UserCommand):
             complete = False
             return (msg, complete)
         except FieldPhoneValueError as e:
-            return (f"Invalid phone value", False)
+            return (f"Invalid phone value. {e}", False)
         except FieldNameValueError as e:
-            return (f"Invalid name value", False)
+            return (f"Invalid name value. {e}", False)
  

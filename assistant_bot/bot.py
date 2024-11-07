@@ -8,7 +8,9 @@ from commands import CommandHello, CommandExit, CommandClose, \
     CommandAddContact, CommandEditContact, CommandDeleteContact, CommandShowContact, CommandAllContacts, \
     CommandAddAddress, CommandEditAddress, CommandDeleteAddress, \
     CommandAddBirthday, CommandDeleteBirthday, CommandShowBirthday, CommandGetUpcomingBirthdays, \
-    CommandAddPhone, CommandEditPhone, CommandDeletePhone, CommandShowPhones
+    CommandAddPhone, CommandEditPhone, CommandDeletePhone, CommandShowPhones, \
+    CommandAddEmail, CommandEditEmail, CommandDeleteEmail, \
+    CommandAddNote, CommandEditNote, CommandDeleteNote, CommandAllNotes
 import store
 
 
@@ -16,10 +18,11 @@ common_command_list = [CommandHello(), CommandExit(), CommandClose()]
 
 address_command_list = [CommandAddContact(), CommandEditContact(), CommandDeleteContact(), CommandShowContact(), CommandAllContacts(),
                         CommandAddAddress(), CommandEditAddress(), CommandDeleteAddress(),
-                        CommandAddBirthday(), CommandDeleteBirthday(
-), CommandShowBirthday(), CommandGetUpcomingBirthdays(),
-    CommandAddPhone(), CommandEditPhone(), CommandDeletePhone(), CommandShowPhones()
-]
+                        CommandAddBirthday(), CommandDeleteBirthday(), CommandShowBirthday(), CommandGetUpcomingBirthdays(),
+                        CommandAddPhone(), CommandEditPhone(), CommandDeletePhone(), CommandShowPhones(),
+                        CommandAddEmail(), CommandEditEmail(), CommandDeleteEmail(),
+                        CommandAddNote(), CommandEditNote(), CommandDeleteNote(), CommandAllNotes()
+                        ]
 notes_command_list = []
 
 
@@ -48,6 +51,16 @@ def get_all_commands():
 def main():
     addressBook = AddressBook()
     notesBook = NotesBook()
+
+    # Uncomment after full implementation
+    # addressBook = None
+    # notesBook = None
+    # try:
+    #     addressBook, notesBook = store.load_data()
+    # except Exception as e:
+    #     print(f"{e}")
+    #     addressBook = AddressBook()
+    #     notesBook = NotesBook()
 
     print("Welcome to the assistant bot!")
     while True:

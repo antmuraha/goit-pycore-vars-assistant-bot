@@ -26,7 +26,8 @@ class CommandAddBirthday(UserCommand):
         if error:
             return error
 
-        name, birthday = args
+        name = args[0]
+        birthday = args[1]
 
         try:
             exist_record = book.find_by_name(name)
