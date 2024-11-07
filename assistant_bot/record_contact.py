@@ -28,10 +28,12 @@ class RecordContact:
         if not self.find_phone(phone):
             self.phones.append(FieldPhone(phone))
         else:
-            raise NotImplementedError
+            raise NotImplementedError 
 
     def add_birthday(self, birthday: str):
         self.birthday = FieldBirthday(birthday)
+        
+    #TODO show_birthday()    
 
     def remove_phone(self, phone: str):
         self.phones = list(filter(lambda p: p.value != phone, self.phones))
