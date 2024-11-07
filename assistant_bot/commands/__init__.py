@@ -24,12 +24,13 @@ from .cmd_note.cmd_add_note import CommandAddNote
 from .cmd_note.cmd_all_notes import CommandAllNotes
 from .cmd_note.cmd_delete_note import CommandDeleteNote
 from .cmd_note.cmd_edit_note import CommandEditNote
-# from .cmd_note.cmd_show_note import 
-
+from .cmd_note.cmd_show_note import CommandShowNote
 
 __all__ = ['CommandHello', 'CommandExit', 'CommandClose', 
            'CommandAddContact', 'CommandEditContact', 'CommandDeleteContact', 'CommandShowContact', 'CommandAllContacts',
            'CommandAddAddress', 'CommandEditAddress', 'CommandDeleteAddress',
            'CommandAddBirthday', 'CommandDeleteBirthday', 'CommandShowBirthday', 'CommandGetUpcomingBirthdays',
-           'CommandAddPhone', 'CommandEditPhone', 'CommandDeletePhone', 'CommandShowPhones', 'CommandAddEmail', 'CommandEditEmail', 'CommandDeleteEmail', 'CommandAddNote', 'CommandAllNotes', 'CommandDeleteNote', 'CommandEditNote'
+           'CommandAddPhone', 'CommandEditPhone', 'CommandDeletePhone', 'CommandShowPhones',
+           'CommandAddEmail', 'CommandEditEmail', 'CommandDeleteEmail',
+           'CommandAddNote', 'CommandAllNotes', 'CommandDeleteNote', 'CommandEditNote', 'CommandShowNote'
            ]
