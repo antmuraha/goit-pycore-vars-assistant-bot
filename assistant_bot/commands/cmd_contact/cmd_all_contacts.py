@@ -11,6 +11,11 @@ class CommandAllContacts(UserCommand):
         self.pattern = "all-contacts"
 
     def execute(self, args, book):
+        if len(book) == 0:
+            msg = "No contacts found."
+            complete = False
+            return (msg, complete)
+
         headers = ["Name", "Phone", "Email", "Address", "Birthday"]
         rows = []
         for contact in book.values():
@@ -21,7 +26,6 @@ class CommandAllContacts(UserCommand):
                 f"{contact.birthday}"
                 ])
         table = PrintTable(headers = headers, rows = rows)
-        msg = f"All book: {book}"
         complete = False
         return (table, complete)
 

@@ -1,4 +1,4 @@
-from fields import FieldText, FieldKeyword
+from fields import FieldText, FieldTitle, FieldKeyword
 
 
 class RecordNote:
@@ -6,7 +6,8 @@ class RecordNote:
     A class to store information about a note, including text.
     '''
 
-    def __init__(self, text):
+    def __init__(self, title, text):
+        self.title = FieldTitle(title)
         self.text = FieldText(text)
         self.keywords: list[FieldKeyword] = []
 
@@ -21,4 +22,4 @@ class RecordNote:
         new_keywords = []
         for word in keywords:
             new_keywords.append(FieldKeyword(word))
-        self.keywords = new_keywords
+        self.keywords = new_keywords[:5]
