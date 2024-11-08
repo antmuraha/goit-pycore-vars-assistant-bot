@@ -11,8 +11,10 @@ class PrintTable():
         table = Table()
         for header in self.headers:
             table.add_column(header, style="magenta")
-        for row in self.rows:
-            table.add_row(*row)
+        for idx, row in enumerate(self.rows):
+            table.add_row(*list(map(lambda x: x.replace('None', ''), row)))
+            if idx != len(self.rows) - 1:
+                table.add_row(*list(map(lambda x: "", row)))
         console = Console()
         console.print(table)
         
