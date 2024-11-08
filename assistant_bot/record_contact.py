@@ -35,7 +35,7 @@ class RecordContact:
         
     def show_birthday(self):
         if self.birthday:
-            return self.birthday.value
+            return self.birthday.value.strftime("%d.%m.%Y")
         
     def delete_birthday(self):
         self.birthday = None

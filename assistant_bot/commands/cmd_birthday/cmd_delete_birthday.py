@@ -28,7 +28,7 @@ class CommandDeleteBirthday(UserCommand):
                 value = exist_record.show_birthday()
                 if value:
                     exist_record.delete_birthday()
-                    return (f"Birthday value has been removed", False)
+                    return (f"Birthday deleted.", False)
 
                 msg = "You haven't added a birthday yet."
                 complete = False

@@ -9,14 +9,14 @@ class CommandGetUpcomingBirthdays(UserCommand):
         self.description = "Show upcoming birthdays."
         self.pattern = "upcoming-birthdays [number]"
 
-    def input_validation(self, params, book):
+    def input_validation(self, params):
         if len(params) == 0:
             msg = self.get_enter_command_message()
             complete = False
             return (msg, complete)
 
     def execute(self, args, book):
-        result = self.input_validation(args, book)
+        result = self.input_validation(args)
         if result:
             return result
 
