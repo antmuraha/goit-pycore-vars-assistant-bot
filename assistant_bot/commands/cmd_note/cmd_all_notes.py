@@ -15,9 +15,9 @@ class CommandAllNotes(UserCommand):
         if len(all_notes):
             headers = ["Title", "Text", "Keywords"]
             rows = []
-            for note in book.values():
+            for title, note in book.items():
                 rows.append([
-                    f"{note.title}",
+                    f"{title}",
                     f"{note.text}"[:100] + ("..." if len(note.text.value) > 100 else ""),
                     ", ".join([f"{k}" for k in note.keywords]),
                 ])
