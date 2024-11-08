@@ -52,18 +52,14 @@ def get_all_commands():
 
 
 def main():
-    addressBook = AddressBook()
-    notesBook = NotesBook()
-
-    # Uncomment after full implementation
-    # addressBook = None
-    # notesBook = None
-    # try:
-    #     addressBook, notesBook = store.load_data()
-    # except Exception as e:
-    #     print(f"{e}")
-    #     addressBook = AddressBook()
-    #     notesBook = NotesBook()
+    addressBook = None
+    notesBook = None
+    try:
+        addressBook, notesBook = store.load_data()
+    except Exception as e:
+        print(f"{e}")
+        addressBook = AddressBook()
+        notesBook = NotesBook()
 
     print("Welcome to the assistant bot!")
     while True:
@@ -110,8 +106,7 @@ def main():
                 else:
                     print(msg)
             if complete:
-                # Uncomment after full implementation
-                # store.save_data([addressBook, notesBook])
+                store.save_data([addressBook, notesBook])
                 save_history_to_file()
                 exit(0)
         else:
