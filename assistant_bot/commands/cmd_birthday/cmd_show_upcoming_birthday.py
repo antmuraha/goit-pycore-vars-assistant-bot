@@ -19,8 +19,11 @@ class CommandGetUpcomingBirthdays(UserCommand):
         result = self.input_validation(args)
         if result:
             return result
-
-        number = args[0]
+        number = 7
+        try:
+            number = int(args[0])
+        except:
+            pass
 
         result = book.show_upcoming_birthday(number)
         if result:

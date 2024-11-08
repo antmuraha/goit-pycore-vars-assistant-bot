@@ -16,7 +16,6 @@ PeopleCongratulationList = typing.List[PersonCongratulation]
 class AddressBook(UserDict[RecordContact]):
     def __init__(self):
         self.data = {}
-        self.forward_days = 7
         self.length_week = 7
         self.length_work_week = 5
         self.date_format = "%d.%m.%Y"  # DD.MM.YYYY
@@ -68,7 +67,7 @@ class AddressBook(UserDict[RecordContact]):
     def remove_record_by_name(self, name):
         raise NotImplementedError
 
-    def show_upcoming_birthday(self) -> PeopleCongratulationList:
+    def show_upcoming_birthday(self, forward_days = 7) -> PeopleCongratulationList:
         upcoming: PeopleCongratulationList = []
         for name in self.data:
             record = self.data[name]
@@ -83,7 +82,7 @@ class AddressBook(UserDict[RecordContact]):
                     year=self.today.year + 1)
 
             diff = (birthday_this_year - self.today).days
-            if diff < self.forward_days:
+            if diff < forward_days:
                 weekday = birthday_this_year.weekday()
                 if weekday + 1 > self.length_work_week:
                     days = self.length_week - weekday
