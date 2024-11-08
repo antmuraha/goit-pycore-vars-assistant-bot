@@ -11,10 +11,8 @@ class RecordNote:
         self.keywords: list[FieldKeyword] = []
 
     def __str__(self):
-        return f"Note text: {self.text} Keywords:{self.keywords}"
-
-    def __repr__(self):
-        return f"RecordNote(text={self.text[:30]!r}, Keywords:{self.keywords})"
+        keywords = list(map(lambda k: f"{k}", self.keywords))
+        return f"Note text: {self.text} Keywords:{keywords}"
 
     def edit_text(self, new_text):
         self.text = FieldText(new_text)

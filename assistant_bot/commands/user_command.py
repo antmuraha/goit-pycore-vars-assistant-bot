@@ -27,5 +27,3 @@ class UserCommand():
     def __str__(self):
         return f"Command: {self.name}. Template: {self.pattern}"
 
-    def __repr__(self):
-        return f"Record: \"{self}\""
