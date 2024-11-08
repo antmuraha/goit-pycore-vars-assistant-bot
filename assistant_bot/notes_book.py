@@ -17,9 +17,13 @@ class NotesBook(UserDict):
         
         notes = "\n".join([f"Title: {note.title}, Content: {note.text[:30]}..." for note in self.data])
         return f"Notes: \n{notes}"
+
+    def __repr__(self):
+        notes = ", ".join([repr(note) for note in self.data.values()])
+        return f"NotesBook{{{notes}}}"
     
-    def add_record(self, title: str, text: str):
-        self.data[title] = RecordNote(title, text)
+    def add_record(self, title: FieldTitle, text):
+        self.data[title] = RecordNote(text)
 
     def remove_record(self, title):
         if title in self.data:
