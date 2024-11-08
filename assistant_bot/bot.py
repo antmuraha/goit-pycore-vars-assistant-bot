@@ -10,7 +10,8 @@ from commands import CommandHello, CommandExit, CommandClose, \
     CommandAddBirthday, CommandDeleteBirthday, CommandShowBirthday, CommandGetUpcomingBirthdays, \
     CommandAddPhone, CommandEditPhone, CommandDeletePhone, CommandShowPhones, \
     CommandAddEmail, CommandEditEmail, CommandDeleteEmail, \
-    CommandAddNote, CommandEditNote, CommandDeleteNote, CommandAllNotes, CommandShowNote, CommandNoteExtractKeywords
+    CommandAddNote, CommandEditNote, CommandDeleteNote, CommandAllNotes, CommandShowNote, CommandNoteExtractKeywords, \
+    CommandFindByPhone, CommandFindByEmail
 import store
 from text_editor import show_text_editor
 
@@ -22,7 +23,7 @@ address_command_list = [
         CommandAddAddress(), CommandEditAddress(), CommandDeleteAddress(),
         CommandAddBirthday(), CommandDeleteBirthday(), CommandShowBirthday(), CommandGetUpcomingBirthdays(),
         CommandAddPhone(), CommandEditPhone(), CommandDeletePhone(), CommandShowPhones(),
-        CommandAddEmail(), CommandEditEmail(), CommandDeleteEmail(),
+        CommandAddEmail(), CommandEditEmail(), CommandDeleteEmail(), CommandFindByPhone(), CommandFindByEmail()
         ]
 notes_command_list = [
         CommandAddNote(), CommandEditNote(), CommandDeleteNote(), CommandAllNotes(), CommandShowNote(), CommandNoteExtractKeywords()
