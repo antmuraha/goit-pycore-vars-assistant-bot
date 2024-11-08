@@ -1,5 +1,6 @@
 from ..user_command import UserCommand
 from record_note import RecordNote
+from notes_book import NotesBook
 
 
 class CommandShowNote(UserCommand):
@@ -14,14 +15,14 @@ class CommandShowNote(UserCommand):
             complete = False
             return (msg, complete)
 
-    def execute(self, args, book):
+    def execute(self, args, book: NotesBook):
         result = self.input_validation(args, book)
         if result:
             return result
 
-        title = args
+        title = args[0]
 
-        exist_record = book.show_note(title)
+        exist_record = book.find_by_title(title)
         if exist_record:
             return (f'{exist_record}', False)
 
