@@ -1,6 +1,7 @@
 from ..user_command import UserCommand
 from record_note import RecordNote
 from notes_book import NotesBook
+from print_table import PrintTable
 from fields import FieldTitleValueError
 
 class CommandShowNote(UserCommand):
@@ -22,13 +23,20 @@ class CommandShowNote(UserCommand):
 
         title = args[0]
 
-        try:
-            exist_record = book.find_by_title(title)
-            if exist_record:
-                return (f'{exist_record}', False)
+        exist_record = book.find_by_title(title)
+        
+        if exist_record:
+            text = book[title]
+            headers = ["Title", "Text"] 
+            rows = [[
+                f"{title}",
+                f"{text}"
+            ]]
+            table = PrintTable(headers = headers, rows = rows)
+            return (table, False)
 
-            msg = "Note doesn't exist."
-            complete = False
-            return (msg, complete)
-        except FieldTitleValueError as e:
-            return (f"Invalid title value. {e}", False)
+        msg = "Note does not exist"
+        complete = False
+        return (msg, complete)
+   
+    
