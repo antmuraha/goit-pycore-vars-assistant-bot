@@ -17,4 +17,4 @@ class FieldPhone(Field):
 
 class FieldPhoneValueError(Exception):
     def __init__(self, *args):
-        super().__init__("The phone number must be 10 characters long")
+        super().__init__("The phone number must be 10 characters long.")

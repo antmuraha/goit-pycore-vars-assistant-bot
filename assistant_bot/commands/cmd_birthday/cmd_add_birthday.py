@@ -7,7 +7,7 @@ from fields import FieldNameValueError, FieldBirthdayValueError
 class CommandAddBirthday(UserCommand):
     def __init__(self):
         self.name = "add-birthday"
-        self.description = "The add birthday."
+        self.description = "Add a birthday to the contact."
         self.pattern = "add-birthday [username] [birthday]"
 
     def input_validation(self, params, book):
@@ -17,7 +17,7 @@ class CommandAddBirthday(UserCommand):
             return (msg, complete)
 
         if len(params) == 1:
-            msg = "Please enter a birthday."
+            msg = "Please enter the contact's birthday."
             complete = False
             return (msg, complete)
 
@@ -37,11 +37,11 @@ class CommandAddBirthday(UserCommand):
                 complete = False
                 return (msg, complete)
 
-            msg = "Contact with this name does not exist yet."
+            msg = "A contact with this name doesn't exist yet."
             complete = False
             return (msg, complete)
 
         except FieldNameValueError as e:
-            return (f"Invalid name value", False)
+            return (f"Invalid name value. {e}", False)
         except FieldBirthdayValueError as e:
             return (f"Invalid birthday value. {e}", False)

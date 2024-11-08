@@ -2,16 +2,12 @@ from ..user_command import UserCommand
 from record_note import RecordNote
 from notes_book import NotesBook
 from print_table import PrintTable
-
-# Enter a command: all-notes
-# ['Note text: test bot please Keywords:[]', 'Note text: create README.md Keywords:[]']
-# Enter a command: show-note QA test
-# Note text: test bot please Keywords:[]
+from fields import FieldTitleValueError
 
 class CommandShowNote(UserCommand):
     def __init__(self):
         self.name = "show-note"
-        self.description = "The show note."
+        self.description = "Display a note."
         self.pattern = "show-note [title]"
 
     def input_validation(self, params, book):

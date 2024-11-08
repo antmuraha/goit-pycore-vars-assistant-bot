@@ -7,7 +7,7 @@ from address_book import AddressBook
 class CommandShowPhones(UserCommand):
     def __init__(self):
         self.name = "show-phones"
-        self.description = "The show all phones."
+        self.description = "Display all phones."
         self.pattern = "show-phones [username]"
 
     def input_validation(self, params, book):
@@ -23,13 +23,16 @@ class CommandShowPhones(UserCommand):
 
         name, = args
 
-        exist_record = book.find_by_name(name)
-        if exist_record:
-            phones = exist_record.show_phones()
-            msg = ", ".join(phones)
+        try:
+            exist_record = book.find_by_name(name)
+            if exist_record:
+                phones = exist_record.show_phones()
+                msg = ", ".join(phones)
+                complete = False
+                return (msg, complete)
+
+            msg = "Contact doesn't exist."
             complete = False
             return (msg, complete)
-
-        msg = "Contact not exist"
-        complete = False
-        return (msg, complete)
+        except FieldNameValueError as e:
+            return (f"Invalid name value. {e}", False)
