@@ -16,7 +16,6 @@ PeopleCongratulationList = typing.List[PersonCongratulation]
 class AddressBook(UserDict[RecordContact]):
     def __init__(self):
         self.data = {}
-        self.forward_days = 7
         self.length_week = 7
         self.length_work_week = 5
         self.date_format = "%d.%m.%Y"  # DD.MM.YYYY
@@ -112,7 +111,7 @@ class AddressBook(UserDict[RecordContact]):
                     year=self.today.year + 1)
 
             diff = (birthday_this_year - self.today).days
-            if diff < int(number):
+            if diff < self.forward_days:
                 weekday = birthday_this_year.weekday()
                 if weekday + 1 > self.length_work_week:
                     days = self.length_week - weekday
