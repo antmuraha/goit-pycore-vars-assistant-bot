@@ -31,7 +31,9 @@ class CommandEditPhone(UserCommand):
         if error:
             return error
 
-        name, phone, new_phone = args
+        name = args[0]
+        phone = args[1]
+        new_phone = args[2]
 
         try:
             exist_record = book.find_by_name(name)
