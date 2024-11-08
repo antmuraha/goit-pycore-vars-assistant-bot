@@ -7,7 +7,7 @@ from address_book import AddressBook
 class CommandEditContact(UserCommand):
     def __init__(self):
         self.name = "edit-contact"
-        self.description = "The edit contact."
+        self.description = "Edit the contact's name."
         self.pattern = "edit-contact [username] [new_username]"
 
     def input_validation(self, params, book):
@@ -17,7 +17,7 @@ class CommandEditContact(UserCommand):
             return (msg, complete)
 
         if len(params) == 1:
-            msg = "Please enter a new_username."
+            msg = "Please enter a new username."
             complete = False
             return (msg, complete)
 
@@ -40,9 +40,9 @@ class CommandEditContact(UserCommand):
                     complete = False
                     return (msg, complete)
 
-            msg = "Contact not exist."
+            msg = "Contact does't exist."
             complete = False
             return (msg, complete)
 
         except FieldNameValueError as e:
-            return (f"{e}", False)
+            return (f"Invalid name value. {e}", False)

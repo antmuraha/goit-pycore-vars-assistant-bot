@@ -1,12 +1,12 @@
 from ..user_command import UserCommand
 from record_note import RecordNote
 from notes_book import NotesBook
-
+from fields import FieldTitleValueError
 
 class CommandShowNote(UserCommand):
     def __init__(self):
         self.name = "show-note"
-        self.description = "The show note."
+        self.description = "Display a note."
         self.pattern = "show-note [title]"
 
     def input_validation(self, params, book):
@@ -22,10 +22,13 @@ class CommandShowNote(UserCommand):
 
         title = args[0]
 
-        exist_record = book.find_by_title(title)
-        if exist_record:
-            return (f'{exist_record}', False)
+        try:
+            exist_record = book.find_by_title(title)
+            if exist_record:
+                return (f'{exist_record}', False)
 
-        msg = "Note does not exist"
-        complete = False
-        return (msg, complete)
+            msg = "Note doesn't exist."
+            complete = False
+            return (msg, complete)
+        except FieldTitleValueError as e:
+            return (f"Invalid title value. {e}", False)

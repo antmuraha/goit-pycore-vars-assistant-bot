@@ -1,14 +1,14 @@
 from ..user_command import UserCommand
 from notes_book import NotesBook
 from record_contact import RecordContact
-from fields import FieldNameValueError
-from fields import FieldText
+from fields import FieldTitleValueError, FieldTextValueError
+
 from text_editor import show_text_editor
 
 class CommandAddNote(UserCommand):
     def __init__(self):
         self.name = "add-note"
-        self.description = "The add note."
+        self.description = "Add a note to the notebook."
         self.pattern = "add-note [title]"
 
     def input_validation(self, params, book):
@@ -27,8 +27,10 @@ class CommandAddNote(UserCommand):
 
         try:
             book.add_record(title, text)
-            msg = "Note added to the notebook."
+            msg = "Note added."
             complete = False
             return (msg, complete)
-        except FieldNameValueError:
-            return ("Invalid title or text value.", False)
+        except FieldTitleValueError as e:
+            return (f"Invalid title or text value. {e}", False)
+        except FieldTextValueError as e:
+            return (f"Invalid text value. {e}", False)
