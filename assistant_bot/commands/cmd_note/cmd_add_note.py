@@ -2,6 +2,7 @@ from ..user_command import UserCommand
 from record_contact import RecordContact
 from fields import FieldNameValueError
 from fields import FieldText
+from notes_book import NotesBook
 
 class CommandAddNote(UserCommand):
     def __init__(self):
@@ -20,7 +21,7 @@ class CommandAddNote(UserCommand):
             complete = False
             return (msg, complete)
 
-    def execute(self, args, book):
+    def execute(self, args, book: NotesBook):
         error = self.input_validation(args)
         if error:
             return error

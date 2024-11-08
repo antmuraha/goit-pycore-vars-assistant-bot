@@ -23,7 +23,7 @@ address_command_list = [CommandAddContact(), CommandEditContact(), CommandDelete
                         CommandAddEmail(), CommandEditEmail(), CommandDeleteEmail(),
                         CommandAddNote(), CommandEditNote(), CommandDeleteNote(), CommandAllNotes(), CommandShowNote()
                         ]
-notes_command_list = []
+notes_command_list = [CommandAddNote(), CommandEditNote(), CommandDeleteNote(), CommandAllNotes()]
 
 
 def get_help():
