@@ -28,3 +28,5 @@ class CommandAllNotes(UserCommand):
 
         complete = False
         return (msg, complete)
+
+       
