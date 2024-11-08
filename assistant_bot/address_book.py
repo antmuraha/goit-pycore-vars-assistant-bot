@@ -68,7 +68,36 @@ class AddressBook(UserDict[RecordContact]):
     def remove_record_by_name(self, name):
         raise NotImplementedError
 
-    def show_upcoming_birthday(self) -> PeopleCongratulationList:
+    # def show_upcoming_birthday(self, number=7) -> PeopleCongratulationList:
+    #     upcoming: PeopleCongratulationList = []
+    #     for name in self.data:
+    #         record = self.data[name]
+    #         if not record.birthday:
+    #             continue
+
+    #         birthday = record.birthday.value
+    #         birthday_this_year = birthday.replace(year=self.today.year)
+
+    #         if birthday_this_year < self.today:
+    #             birthday_this_year = birthday_this_year.replace(
+    #                 year=self.today.year + 1)
+
+    #         diff = (birthday_this_year - self.today).days
+    #         if diff < self.forward_days:
+    #             weekday = birthday_this_year.weekday()
+    #             if weekday + 1 > self.length_work_week:
+    #                 days = self.length_week - weekday
+    #                 birthday_this_year = birthday_this_year + \
+    #                     timedelta(days=days)
+    #             upcoming.append({
+    #                 "name": record.name.value,
+    #                 "congratulation_date": birthday_this_year.strftime(self.date_format)
+    #             })
+
+    #     return upcoming
+
+
+    def show_upcoming_birthday(self, number=7) -> PeopleCongratulationList:
         upcoming: PeopleCongratulationList = []
         for name in self.data:
             record = self.data[name]
@@ -83,7 +112,7 @@ class AddressBook(UserDict[RecordContact]):
                     year=self.today.year + 1)
 
             diff = (birthday_this_year - self.today).days
-            if diff < self.forward_days:
+            if diff < int(number):
                 weekday = birthday_this_year.weekday()
                 if weekday + 1 > self.length_work_week:
                     days = self.length_week - weekday
@@ -95,3 +124,4 @@ class AddressBook(UserDict[RecordContact]):
                 })
 
         return upcoming
+    
