@@ -5,7 +5,7 @@
 
 # <p align="center">```VARS BOT```</p>
 
-A Personal Assistant Bot built in <a href="https://www.python.org/" target="_blanc">Python</a>, featuring interactive console tables styled with the powerful  <a href="https://rich.readthedocs.io/en/latest/tables.html" target="_blank">Rich</a> library.
+<p align="center">A Personal Assistant Bot built in <a href="https://www.python.org/" target="_blanc">Python</a>, featuring interactive console tables styled with the powerful  <a href="https://rich.readthedocs.io/en/latest/tables.html" target="_blank">Rich</a> library.</p>
 
 
 ## Description
@@ -77,7 +77,7 @@ This project delivers a robust, user-centric personal assistant with efficient d
 
 ## Stay in touch
 
-- Author - [Ruslan Kryvko, Svitlana Ripa, Anastasiia Kushch, Viacheslav Opryshko - VARS Team]
+- Authors - [Ruslan Kryvko, Svitlana Ripa, Anastasiia Kushch, Viacheslav Opryshko - VARS Team]
 
 
 ## License
