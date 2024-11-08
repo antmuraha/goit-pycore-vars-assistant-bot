@@ -8,15 +8,13 @@ class FieldName(Field):
     '''
 
     def validation(self, value: str) -> str:
-        pattern = r"^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ']{2,}\s+[A-Za-zА-Яа-яЁёІіЇїЄєҐґ']{2,}$"
+        pattern = r"^[a-z]+$"
         if not isinstance(value, str) or not re.match(pattern, value):
-            raise FieldNameValueError(
-                "Required format:[name(at least 2 letters)] space [surname(at least 2 letters)]"
-            )
+            raise FieldNameValueError
 
         return value
 
 
 class FieldNameValueError(Exception):
-    def __init__(self, message="Invalid name format."):  # Default message
+    def __init__(self, message="The name must consist of only letters"):
         super().__init__(message)
