@@ -13,16 +13,15 @@ class CommandAllNotes(UserCommand):
         all_notes = list(map(lambda n: f"{n}", book.values()))
 
         if len(all_notes):
-            headers = ["Title", "Text"] 
+            headers = ["Title", "Text", "Keywords"]
             rows = []
-
-            for title, text in book.items():
+            for note in book.values():
                 rows.append([
-                            f"{title}",
-                            f"{text}"
-                            ])
-            table = PrintTable(headers = headers, rows = rows)
-            return (table, False)
+                    f"{note.title}",
+                    f"{note.text}"[:100] + ("..." if len(note.text.value) > 100 else ""),
+                    ", ".join([f"{k}" for k in note.keywords]),
+                ])
+            table = PrintTable(headers=headers, rows=rows)
             msg = table
         else:
             msg = "No notes found."
