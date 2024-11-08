@@ -22,7 +22,7 @@ class CommandNoteExtractKeywords(UserCommand):
         if error:
             return error
 
-        title = args[0]
+        title = " ".join(list(map(lambda x: "" if (x == '-w') or (x == '--write') else x,args)))
         flags = args[1:]
         write_keywords = ('-w' in flags) or ('--write' in flags)
 

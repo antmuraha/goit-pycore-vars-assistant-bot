@@ -21,16 +21,17 @@ class CommandShowNote(UserCommand):
         if result:
             return result
 
-        title = args[0]
+        title = " ".join(args)
 
         exist_record = book.find_by_title(title)
         
         if exist_record:
-            text = book[title]
-            headers = ["Title", "Text"] 
+            note = book[title]
+            headers = ["Title", "Text", "Keywords"] 
             rows = [[
                 f"{title}",
-                f"{text}"
+                f"{note.text}",
+                ", ".join([f"{k}" for k in note.keywords]),
             ]]
             table = PrintTable(headers = headers, rows = rows)
             return (table, False)

@@ -13,7 +13,6 @@ from commands import CommandHello, CommandExit, CommandClose, \
     CommandAddNote, CommandEditNote, CommandDeleteNote, CommandAllNotes, CommandShowNote, CommandNoteExtractKeywords, \
     CommandFindByPhone, CommandFindByEmail
 import store
-from text_editor import show_text_editor
 
 
 common_command_list = [CommandHello(), CommandExit(), CommandClose()]
@@ -31,15 +30,15 @@ notes_command_list = [
 
 
 def get_help():
-    commands = []
+    rows = []
     all = common_command_list + address_command_list + notes_command_list
     for cmd in all:
-        exist = next((x for x in commands if x[0] == cmd.pattern), None)
+        exist = next((x for x in rows if x[0] == cmd.pattern), None)
         if not exist:
-            commands.append((cmd.pattern, cmd.description))
-    text = list(
-        map(lambda cmd: f"{Fore.BLUE}{cmd[0]}{Style.RESET_ALL} - {cmd[1]}", commands))
-    return "\n".join(text)
+            rows.append([f"{cmd.name}", f"{cmd.pattern}", cmd.description])
+    headers = ["Command", "Pattern", "Description"] 
+    table = PrintTable(headers = headers, rows = rows, without_empty_rows=True)
+    return table
 
 
 def get_all_commands():
@@ -73,12 +72,7 @@ def main():
 
         if command == "help":
             msg = get_help()
-            print(msg)
-            continue
-        
-        if command == "text-editor":
-            new_text = show_text_editor("Some text for editing...")
-            print(f"New text:", new_text)
+            msg.show()
             continue
 
         # Find the target class of the command

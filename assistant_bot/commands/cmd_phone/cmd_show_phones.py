@@ -21,7 +21,7 @@ class CommandShowPhones(UserCommand):
         if error:
             return error
 
-        name, = args
+        name = args[0]
 
         try:
             exist_record = book.find_by_name(name)

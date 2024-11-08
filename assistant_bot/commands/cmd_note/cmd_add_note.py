@@ -22,10 +22,16 @@ class CommandAddNote(UserCommand):
         if error:
             return error
 
-        title = args[0]
-        text = show_text_editor('')
+        title = " ".join(args)
+
+        record = book.find_by_title(title)
+        if record:
+            msg = "A note with this name already exists"
+            complete = False
+            return (msg, complete)
 
         try:
+            text = show_text_editor('')
             book.add_record(title, text)
             msg = "Note added."
             complete = False
