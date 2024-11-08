@@ -23,11 +23,6 @@ class CommandFindByPhone(UserCommand):
 
         phone = args[0]
 
-        if len(phone) != 10:
-            msg = "The phone number must be 10 characters long."
-            complete = False
-            return (msg, complete)
-
         found_contacts = []
 
         for name, contact in book.items():
@@ -35,7 +30,6 @@ class CommandFindByPhone(UserCommand):
                 found_contacts.append(contact)
 
         if found_contacts:
-            result = []    
             for contact in found_contacts:
                 headers=["Name", "Phone", "Email", "Address", "Birthday"]
                 rows = [[

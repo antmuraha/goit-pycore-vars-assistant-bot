@@ -27,6 +27,7 @@ from .cmd_note.cmd_edit_note import CommandEditNote
 from .cmd_note.cmd_show_note import CommandShowNote
 from .cmd_note.cmd_note_extract_keywords import CommandNoteExtractKeywords
 from .cmd_contact.cmd_find_by_phone import CommandFindByPhone
+from .cmd_contact.cmd_find_by_email import CommandFindByEmail
 
 __all__ = [
     'CommandHello',
@@ -57,5 +58,6 @@ __all__ = [
     'CommandEditNote',
     'CommandShowNote',
     'CommandNoteExtractKeywords',
-    'CommandFindByPhone'
+    'CommandFindByPhone', 
+    'CommandFindByEmail'
 ]
