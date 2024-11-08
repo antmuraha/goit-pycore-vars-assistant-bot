@@ -7,7 +7,7 @@ from address_book import AddressBook
 class CommandEditPhone(UserCommand):
     def __init__(self):
         self.name = "edit-phone"
-        self.description = "The edit phone."
+        self.description = "Edit the phone."
         self.pattern = "edit-phone [username] [phone] [new_phone]"
 
     def input_validation(self, params, book):
@@ -22,7 +22,7 @@ class CommandEditPhone(UserCommand):
             return (msg, complete)
         
         if len(params) == 2:
-            msg = "Please enter a new_phone."
+            msg = "Please enter a new phone."
             complete = False
             return (msg, complete)
 
@@ -42,13 +42,14 @@ class CommandEditPhone(UserCommand):
                     complete = False
                     return (msg, complete)
                 
-                msg = "The phone does not exist."
+                msg = "The phone doesn't exist."
                 complete = False
                 return (msg, complete)
             
-            msg = "Contact not exist"
+            msg = "Contact doesn't exist."
             complete = False
             return (msg, complete)
-
+        except FieldNameValueError as e:
+            return (f"Invalid name value. {e}", False)
         except FieldPhoneValueError as e:
             return (f"Invalid phone value. {e}", False)

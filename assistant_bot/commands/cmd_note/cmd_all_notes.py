@@ -6,7 +6,7 @@ from print_table import PrintTable
 class CommandAllNotes(UserCommand):
     def __init__(self):
         self.name = "all-notes"
-        self.description = "Display all notes for all contacts."
+        self.description = "Display all notes."
         self.pattern = "all-notes"
 
     def execute(self, args, book: NotesBook):

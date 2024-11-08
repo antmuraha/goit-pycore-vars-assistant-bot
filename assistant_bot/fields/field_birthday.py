@@ -8,8 +8,10 @@ class FieldBirthday(Field):
     '''
     date_format = "%d.%m.%Y"  # DD.MM.YYYY
 
+    def __str__(self):
+        return self.value.strftime(FieldBirthday.date_format) 
+
     def validation(self, value: str) -> date:
-        # DD.MM.YYYY
         try:
             return datetime.strptime(value, FieldBirthday.date_format).date()
         except Exception as e:

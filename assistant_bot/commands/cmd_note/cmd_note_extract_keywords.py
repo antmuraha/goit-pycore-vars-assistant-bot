@@ -47,8 +47,8 @@ class CommandNoteExtractKeywords(UserCommand):
             return (msg, complete)
 
         except FieldTitleValueError as e:
-            return (f"Invalid title value", False)
+            return (f"Invalid title value. {e}", False)
         except FieldTextValueError as e:
-            return (f"Invalid text value", False)
+            return (f"Invalid text value. {e}", False)
         except FieldKeywordValueError as e:
-            return (f"Invalid keyword value", False)
+            return (f"Invalid keyword value. {e}", False)

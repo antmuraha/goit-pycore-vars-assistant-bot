@@ -6,30 +6,27 @@ from fields import FieldNameValueError
 class CommandGetUpcomingBirthdays(UserCommand):
     def __init__(self):
         self.name = "upcoming-birthdays"
-        self.description = "The upcoming birthdays."
+        self.description = "Show upcoming birthdays."
         self.pattern = "upcoming-birthdays [number]"
 
-    def input_validation(self, params, book):
+    def input_validation(self, params):
         if len(params) == 0:
             msg = self.get_enter_command_message()
             complete = False
             return (msg, complete)
 
     def execute(self, args, book):
-        result = self.input_validation(args, book)
+        result = self.input_validation(args)
         if result:
             return result
 
         number = args[0]
 
-        try:
-            result = book.show_upcoming_birthday(number)
-            if result:
-                return (result, False)
+        result = book.show_upcoming_birthday(number)
+        if result:
+            return (result, False)
 
-            msg = f"There are no birthdays in {number} days."
-            complete = False
-            return (msg, complete)
+        msg = f"There are no birthdays in {number} days."
+        complete = False
+        return (msg, complete)
 
-        except FieldNameValueError as e:
-            return (f"Invalid name value", False)
