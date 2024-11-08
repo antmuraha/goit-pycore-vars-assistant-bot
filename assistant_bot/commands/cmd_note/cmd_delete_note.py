@@ -5,7 +5,7 @@ from fields import FieldTitleValueError
 class CommandDeleteNote(UserCommand):
     def __init__(self):
         self.name = "delete-note"
-        self.description = "Delete the note."
+        self.description = "Delete a note from the notebook."
         self.pattern = "delete-note [title]" 
 
     def input_validation(self, params, book):
@@ -34,5 +34,5 @@ class CommandDeleteNote(UserCommand):
             complete = False
             return (msg, complete)
         except FieldTitleValueError as e:
-            return (f"Invalid title value", False)
+            return (f"Invalid title value. {e}", False)
     

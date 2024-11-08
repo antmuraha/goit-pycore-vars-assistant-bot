@@ -4,7 +4,7 @@ from fields import FieldNameValueError, FieldEmailValueError
 class CommandDeleteEmail(UserCommand):
     def __init__(self):
         self.name = "delete-email"
-        self.description = "Delete a contact's email address."
+        self.description = "Delete a contact's email."
         self.pattern = "delete-email [username]"
 
     def input_validation(self, params):
@@ -24,12 +24,12 @@ class CommandDeleteEmail(UserCommand):
             exist_record = book.get(name)
             if exist_record:
                 exist_record.remove_email()
-                msg = "Contact's email deleted."
+                msg = "Email deleted."
             else:
                 msg = "Сontact not found."
             
             complete = False
             return (msg, complete)
-        except FieldNameValueError:
-            return ("Invalid name value.", False)
+        except FieldNameValueError as e:
+            return (f"Invalid name value. {e}", False)
 

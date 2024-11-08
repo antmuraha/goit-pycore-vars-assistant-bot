@@ -7,7 +7,7 @@ from text_editor import show_text_editor
 class CommandEditNote(UserCommand):
     def __init__(self):
         self.name = "edit-note"
-        self.description = "Edit the text of the note."
+        self.description = "Edit the note's text."
         self.pattern = "edit-note [title]"
 
     def input_validation(self, params, book):
@@ -33,11 +33,11 @@ class CommandEditNote(UserCommand):
                 complete = False
                 return (msg, complete)
 
-            msg = "Note not exist."
+            msg = "Note doesn't exist."
             complete = False
             return (msg, complete)
 
         except FieldTitleValueError as e:
-            return (f"Invalid title value", False)
+            return (f"Invalid title value. {e}", False)
         except FieldTextValueError as e:
-            return (f"Invalid text value", False)
+            return (f"Invalid text value. {e}", False)

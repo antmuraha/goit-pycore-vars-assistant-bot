@@ -6,7 +6,7 @@ from fields import FieldNameValueError, FieldAddressValueError
 class CommandDeleteAddress(UserCommand):
     def __init__(self):
         self.name = "delete-address"
-        self.description = "The delete address."
+        self.description = "Delete an address from the contact."
         self.pattern = "delete-address [username]"
 
     def input_validation(self, params, book):
@@ -32,6 +32,6 @@ class CommandDeleteAddress(UserCommand):
                 return (msg, complete)
             
         except FieldAddressValueError as e:
-            return (f"Invalid address value", False)
+            return (f"Invalid address value. {e}", False)
         except FieldNameValueError as e:
-            return (f"Invalid name value", False)
+            return (f"Invalid name value. {e}", False)

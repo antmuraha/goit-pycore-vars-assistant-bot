@@ -6,7 +6,7 @@ from fields import FieldNameValueError, FieldAddressValueError
 class CommandAddAddress(UserCommand):
     def __init__(self):
         self.name = "add-address"
-        self.description = "The add address."
+        self.description = "Add an address to the contact."
         self.pattern = "add-address [username] [address]"
 
     def input_validation(self, params, book):

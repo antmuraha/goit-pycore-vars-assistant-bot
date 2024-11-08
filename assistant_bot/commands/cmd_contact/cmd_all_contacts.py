@@ -7,7 +7,7 @@ from print_table import PrintTable
 class CommandAllContacts(UserCommand):
     def __init__(self):
         self.name = "all-contacts"
-        self.description = "The all contacts."
+        self.description = "Show all contacts in the address book."
         self.pattern = "all-contacts"
 
     def execute(self, args, book):
