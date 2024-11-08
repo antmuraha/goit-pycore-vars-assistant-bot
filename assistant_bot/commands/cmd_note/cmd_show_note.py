@@ -28,10 +28,9 @@ class CommandShowNote(UserCommand):
         title = args[0]
 
         exist_record = book.find_by_title(title)
-        text = book[title]
-        print(text)
-
+        
         if exist_record:
+            text = book[title]
             headers = ["Title", "Text"] 
             rows = [[
                 f"{title}",
