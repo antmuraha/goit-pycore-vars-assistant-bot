@@ -25,7 +25,7 @@ address_command_list = [
         CommandAddEmail(), CommandEditEmail(), CommandDeleteEmail(),
         ]
 notes_command_list = [
-        CommandAddNote(), CommandEditNote(), CommandDeleteNote(), CommandAllNotes(),
+        CommandAddNote(), CommandEditNote(), CommandDeleteNote(), CommandAllNotes(), CommandShowNote()
         ]
 
 
