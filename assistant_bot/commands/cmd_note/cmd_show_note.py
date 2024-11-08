@@ -19,7 +19,7 @@ class CommandShowNote(UserCommand):
         if result:
             return result
 
-        title = args
+        title, = args
 
         exist_record = book.show_note(title)
         if exist_record:
