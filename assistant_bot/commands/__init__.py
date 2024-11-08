@@ -25,12 +25,35 @@ from .cmd_note.cmd_all_notes import CommandAllNotes
 from .cmd_note.cmd_delete_note import CommandDeleteNote
 from .cmd_note.cmd_edit_note import CommandEditNote
 from .cmd_note.cmd_show_note import CommandShowNote
+from .cmd_note.cmd_note_extract_keywords import CommandNoteExtractKeywords
 
-__all__ = ['CommandHello', 'CommandExit', 'CommandClose', 
-           'CommandAddContact', 'CommandEditContact', 'CommandDeleteContact', 'CommandShowContact', 'CommandAllContacts',
-           'CommandAddAddress', 'CommandEditAddress', 'CommandDeleteAddress',
-           'CommandAddBirthday', 'CommandDeleteBirthday', 'CommandShowBirthday', 'CommandGetUpcomingBirthdays',
-           'CommandAddPhone', 'CommandEditPhone', 'CommandDeletePhone', 'CommandShowPhones',
-           'CommandAddEmail', 'CommandEditEmail', 'CommandDeleteEmail',
-           'CommandAddNote', 'CommandAllNotes', 'CommandDeleteNote', 'CommandEditNote', 'CommandShowNote'
-           ]
+__all__ = [
+    'CommandHello',
+    'CommandExit',
+    'CommandClose',
+    'CommandAddContact',
+    'CommandEditContact',
+    'CommandDeleteContact',
+    'CommandShowContact',
+    'CommandAllContacts',
+    'CommandAddAddress',
+    'CommandEditAddress',
+    'CommandDeleteAddress',
+    'CommandAddBirthday',
+    'CommandDeleteBirthday',
+    'CommandShowBirthday',
+    'CommandGetUpcomingBirthdays',
+    'CommandAddPhone',
+    'CommandEditPhone',
+    'CommandDeletePhone',
+    'CommandShowPhones',
+    'CommandAddEmail',
+    'CommandEditEmail',
+    'CommandDeleteEmail',
+    'CommandAddNote',
+    'CommandAllNotes',
+    'CommandDeleteNote',
+    'CommandEditNote',
+    'CommandShowNote',
+    'CommandNoteExtractKeywords'
+]

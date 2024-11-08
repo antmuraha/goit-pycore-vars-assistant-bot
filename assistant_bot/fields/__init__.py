@@ -6,7 +6,23 @@ from .field_email import FieldEmail, FieldEmailValueError
 from .field_text import FieldText, FieldTextValueError
 from .field_title import FieldTitle, FieldTitleValueError
 from .field_address import FieldAddress, FieldAddressValueError
+from .field_keyword import FieldKeyword, FieldKeywordValueError
 
 
-__all__ = ['Field', 'FieldName', 'FieldNameValueError', 'FieldPhone',
-           'FieldPhoneValueError', 'FieldBirthday', 'FieldBirthdayValueError', 'FieldEmail', 'FieldEmailValueError', 'FieldText', 'FieldTextValueError', 'FieldTitle', 'FieldTitleValueError', 'FieldAddress', 'FieldAddressValueError']
+__all__ = [
+    'Field',
+    'FieldName',
+    'FieldNameValueError',
+    'FieldPhone',
+    'FieldPhoneValueError', 'FieldBirthday', 'FieldBirthdayValueError',
+    'FieldEmail',
+    'FieldEmailValueError',
+    'FieldText',
+    'FieldTextValueError',
+    'FieldTitle',
+    'FieldTitleValueError',
+    'FieldAddress',
+    'FieldAddressValueError',
+    'FieldKeyword',
+    'FieldKeywordValueError'
+]

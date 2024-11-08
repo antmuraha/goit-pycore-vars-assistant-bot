@@ -1,4 +1,4 @@
-# from colorama import Fore, Style
+from colorama import Fore, Style
 from parse_input import parse_input
 from completer import completer, save_history_to_file
 from address_book import AddressBook
@@ -10,7 +10,7 @@ from commands import CommandHello, CommandExit, CommandClose, \
     CommandAddBirthday, CommandDeleteBirthday, CommandShowBirthday, CommandGetUpcomingBirthdays, \
     CommandAddPhone, CommandEditPhone, CommandDeletePhone, CommandShowPhones, \
     CommandAddEmail, CommandEditEmail, CommandDeleteEmail, \
-    CommandAddNote, CommandEditNote, CommandDeleteNote, CommandAllNotes, CommandShowNote
+    CommandAddNote, CommandEditNote, CommandDeleteNote, CommandAllNotes, CommandShowNote, CommandNoteExtractKeywords
 import store
 from text_editor import show_text_editor
 
@@ -25,7 +25,7 @@ address_command_list = [
         CommandAddEmail(), CommandEditEmail(), CommandDeleteEmail(),
         ]
 notes_command_list = [
-        CommandAddNote(), CommandEditNote(), CommandDeleteNote(), CommandAllNotes(), CommandShowNote()
+        CommandAddNote(), CommandEditNote(), CommandDeleteNote(), CommandAllNotes(), CommandShowNote(), CommandNoteExtractKeywords()
         ]
 
 

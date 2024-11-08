@@ -19,8 +19,6 @@ class RecordContact:
         birthday_str = f" ({self.birthday})" if self.birthday else ''
         return f"Contact name: {self.name.value}{birthday_str}, phones: {', '.join(p.value for p in self.phones)}"
 
-    def __repr__(self):
-        return f"Record: \"{self}\""
     
     def rename(self, new_name):
         self.name = FieldName(new_name)
