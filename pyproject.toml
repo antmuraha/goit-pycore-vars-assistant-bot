@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "varsbot"
+authors = [
+    {name = "Viacheslav Opryshko"},
+    {name = "Anastasiia Kushch"},
+    {name = "Ruslan Kryvko"},
+    {name = "Svitlana Ripa"}
+]
+description = "A Python-based console application designed for managing contacts and notes"
+requires-python = ">=3.8"
+keywords = ["bot", "PhoneBook", "NotesBook"]
+license = {text = "MIT"}
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: Console users",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+dependencies = [
+    "prompt_toolkit==3.0.48",
+    "nltk==3.9.1",
+    "rake_nltk==1.0.6",
+    "rich==13.9.4"
+]
+dynamic = ["version"]
+
+[project.urls]
+MyHomepage = "https://github.com/antmuraha/goit-pycore-vars-assistant-bot"
+
+[project.scripts]
+varsbot = "assistant_bot:main"
