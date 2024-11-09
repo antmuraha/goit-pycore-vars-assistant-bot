@@ -8,7 +8,7 @@ class FieldName(Field):
     '''
 
     def validation(self, value: str) -> str:
-        pattern = r"^[a-z]+$"
+        pattern = r"^[a-zA-Z]+$"
         if not isinstance(value, str) or not re.match(pattern, value):
             raise FieldNameValueError
 
