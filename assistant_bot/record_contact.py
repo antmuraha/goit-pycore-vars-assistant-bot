@@ -27,8 +27,6 @@ class RecordContact:
     def add_phone(self, phone: str):
         if not self.find_phone(phone):
             self.phones.append(FieldPhone(phone))
-        else:
-            raise ValueError 
 
     def add_birthday(self, birthday: str):
         self.birthday = FieldBirthday(birthday)

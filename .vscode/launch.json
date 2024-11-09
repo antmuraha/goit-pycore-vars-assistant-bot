@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "name": "Run Book [file]",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "assistant_bot/__main__.py",
+            "console": "integratedTerminal"
+        }
+    ]
+}

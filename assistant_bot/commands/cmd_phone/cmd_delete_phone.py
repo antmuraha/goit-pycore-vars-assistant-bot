@@ -26,7 +26,8 @@ class CommandDeletePhone(UserCommand):
         if error:
             return error
 
-        name, phone = args
+        name = args[0]
+        phone = args[1]
 
         try:
             exist_record = book.find_by_name(name)

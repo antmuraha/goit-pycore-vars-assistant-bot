@@ -19,7 +19,7 @@ class CommandDeleteNote(UserCommand):
         if error:
             return error
         
-        title = args[0]
+        title = " ".join(args)
 
         try:
             exist_record = book.get(title)

@@ -26,7 +26,7 @@ class CommandAddAddress(UserCommand):
             return error
 
         name = args[0]
-        address = args[1]
+        address = " ".join(args[1:])
         
         try:
             exist_record = book.get(name)

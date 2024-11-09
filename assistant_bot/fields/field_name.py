@@ -1,3 +1,4 @@
+import re
 from .field import Field
 
 
@@ -7,12 +8,13 @@ class FieldName(Field):
     '''
 
     def validation(self, value: str) -> str:
-        if type(value) != str or len(value) == 0:
+        pattern = r"^[a-z]+$"
+        if not isinstance(value, str) or not re.match(pattern, value):
             raise FieldNameValueError
 
         return value
 
 
 class FieldNameValueError(Exception):
-    def __init__(self, *args):
-        super().__init__(*args)
+    def __init__(self, message="The name must consist of only letters"):
+        super().__init__(message)

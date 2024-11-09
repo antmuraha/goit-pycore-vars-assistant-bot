@@ -31,7 +31,9 @@ class CommandAddContact(UserCommand):
         try:
             exist_record = book.get(name)
             if exist_record:
-                exist_record.add_phone(phone)
+                msg = "Contact is exist."
+                complete = False
+                return (msg, complete)
             else:
                 record = RecordContact(name)
                 record.add_phone(phone)

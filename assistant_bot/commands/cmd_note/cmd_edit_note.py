@@ -21,15 +21,18 @@ class CommandEditNote(UserCommand):
         if error:
             return error
 
-        title = args[0]
+        title = " ".join(args)
 
         try:
             exist_record = book.find_by_title(title)
             if exist_record:
                 new_text = show_text_editor(exist_record.text.value)
-                print(f"New text:", new_text)
-                exist_record.edit_text(new_text)
-                msg = "Note edited."
+                if new_text != exist_record.text.value:
+                    exist_record.edit_text(new_text)
+                    msg = "Note edited."
+                    complete = False
+                    return (msg, complete)
+                msg = "Note is not changed"
                 complete = False
                 return (msg, complete)
 

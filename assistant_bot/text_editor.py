@@ -58,11 +58,12 @@ def get_statusbar_right_text():
 
 search_toolbar = SearchToolbar()
 text_field = TextArea(
-    lexer=DynamicLexer(
-        lambda: PygmentsLexer.from_filename(
-            ApplicationState.current_path or ".txt", sync_from_start=False
-        )
-    ),
+    scrollbar=True,
+    line_numbers=True,
+    search_field=search_toolbar,
+)
+
+old_text_field = TextArea(
     scrollbar=True,
     line_numbers=True,
     search_field=search_toolbar,
@@ -161,35 +162,8 @@ def _(event):
     "Focus menu."
     event.app.layout.focus(root_container.window)
 
-
-#
-# Handlers for menu items.
-#
-
-
-# def do_open_file():
-#     async def coroutine():
-#         open_dialog = TextInputDialog(
-#             title="Open file",
-#             label_text="Enter the path of a file:",
-#             completer=PathCompleter(),
-#         )
-
-#         path = await show_dialog_as_float(open_dialog)
-#         ApplicationState.current_path = path
-
-#         if path is not None:
-#             try:
-#                 with open(path, "rb") as f:
-#                     text_field.text = f.read().decode("utf-8", errors="ignore")
-#             except OSError as e:
-#                 show_message("Error", f"{e}")
-
-#     ensure_future(coroutine())
-
-
 def do_about():
-    show_message("About", "Text editor demo.\nCreated by Jonathan Slenders.")
+    show_message("About", "Text editor.\nCreated for VARS assistant bot.")
 
 
 def show_message(title, text):
@@ -221,8 +195,11 @@ async def show_dialog_as_float(dialog):
 def do_new_file():
     text_field.text = ""
 
+def do_save_and_exit():
+    get_app().exit()
 
 def do_exit():
+    text_field.text = old_text_field.text
     get_app().exit()
 
 
@@ -299,19 +276,13 @@ def do_status_bar():
 #
 # The menu container.
 #
-
-
 root_container = MenuContainer(
     body=body,
     menu_items=[
         MenuItem(
             "Note",
             children=[
-                # MenuItem("New...", handler=do_new_file),
-                # MenuItem("Open...", handler=do_open_file),
-                # MenuItem("Save"),
-                # MenuItem("Save as..."),
-                # MenuItem("-", disabled=True),
+                MenuItem("Save and exit", handler=do_save_and_exit),
                 MenuItem("Exit", handler=do_exit),
             ],
         ),
@@ -373,6 +344,7 @@ application = Application(
 
 
 def show_text_editor(text):
+    old_text_field.text = text
     text_field.text = text
     application.run()
     return text_field.text
