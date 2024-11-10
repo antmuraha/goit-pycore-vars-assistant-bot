@@ -1,10 +1,10 @@
-from colorama import Fore, Style
 from parse_input import parse_input
 from completer import completer, save_history_to_file
 from address_book import AddressBook
 from notes_book import NotesBook
 from print_table import PrintTable
 from parse_input import get_parser, get_help_first_line
+from logo import print_logo
 from commands import CommandHello, CommandExit, CommandClose, \
     CommandAddContact, CommandEditContact, CommandDeleteContact, CommandShowContact, CommandAllContacts, \
     CommandAddAddress, CommandEditAddress, CommandDeleteAddress, \
@@ -76,6 +76,7 @@ def main():
         notesBook = NotesBook()
 
     print("Welcome to the assistant bot!")
+    print_logo()
     while True:
         user_input = completer(get_all_commands())
         if not len(user_input.strip()):
