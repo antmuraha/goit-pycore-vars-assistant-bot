@@ -13,7 +13,6 @@ class CommandBookInfo(UserCommand):
     def execute(self, args, books: list[AddressBook, NotesBook]):
         headers = ["Book", "Description", "Records"]
         rows = []
-        print(books)
         rows.append(["Addresses book", "A book for managing contacts", len(books[0])])
         rows.append(["Notes book", "A book for managing notes", len(books[1])])
         table = PrintTable(headers=headers, rows=rows)
