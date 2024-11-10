@@ -11,11 +11,12 @@ from commands import CommandHello, CommandExit, CommandClose, \
     CommandAddPhone, CommandEditPhone, CommandDeletePhone, CommandShowPhones, \
     CommandAddEmail, CommandEditEmail, CommandDeleteEmail, \
     CommandAddNote, CommandEditNote, CommandDeleteNote, CommandAllNotes, CommandShowNote, CommandNoteExtractKeywords, \
-    CommandFindByPhone, CommandFindByEmail
+    CommandFindByPhone, CommandFindByEmail, \
+    CommandBooksInfo
 import store
 
 
-common_command_list = [CommandHello(), CommandExit(), CommandClose()]
+common_command_list = [CommandHello(), CommandExit(), CommandClose(), CommandBooksInfo()]
 
 address_command_list = [
         CommandAddContact(), CommandEditContact(), CommandDeleteContact(), CommandShowContact(), CommandAllContacts(),
