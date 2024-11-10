@@ -33,16 +33,13 @@ $ cd <dir-name>
 $ python -m venv .
 $ source bin/activate
 $ git clone https://github.com/antmuraha/goit-pycore-vars-assistant-bot.git
-# $ pip install -r requirements.txt
-$ cd <goit-pycore-vars-assistant-bot>
-$ pip install dist/varsbot-0.0.0-py3-none-any.whl
+$ pip install -r requirements.txt
 ```
 
 ## Running the app
 
 ```bash
-# $ python assistant_bot/
-$ varsbot
+$ python assistant_bot
 ```
 
 ## Technical Specification Summary for the "Personal Assistant" Project
