@@ -39,7 +39,7 @@ $ pip install -r requirements.txt
 ## Running the app
 
 ```bash
-$ python assistant_bot/
+$ python assistant_bot
 ```
 
 ## Technical Specification Summary for the "Personal Assistant" Project
@@ -82,7 +82,5 @@ This project delivers a robust, user-centric personal assistant with efficient d
 
 ## License
 
-
-[MIT licensed](LICENSE) - # to input 
-
+This project is licensed under the [MIT licensed](LICENSE) 
 
