@@ -33,13 +33,16 @@ $ cd <dir-name>
 $ python -m venv .
 $ source bin/activate
 $ git clone https://github.com/antmuraha/goit-pycore-vars-assistant-bot.git
-$ pip install -r requirements.txt
+# $ pip install -r requirements.txt
+$ cd <goit-pycore-vars-assistant-bot>
+$ pip install dist/varsbot-0.0.0-py3-none-any.whl
 ```
 
 ## Running the app
 
 ```bash
-$ python assistant_bot/
+# $ python assistant_bot/
+$ varsbot
 ```
 
 ## Technical Specification Summary for the "Personal Assistant" Project
@@ -82,7 +85,5 @@ This project delivers a robust, user-centric personal assistant with efficient d
 
 ## License
 
-
-[MIT licensed](LICENSE) - # to input 
-
+This project is licensed under the [MIT licensed](LICENSE) 
 
