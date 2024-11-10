@@ -20,7 +20,7 @@ class CommandAddContact(UserCommand):
         try:
             exist_record = book.get(name)
             if exist_record:
-                msg = "Contact is exist."
+                msg = "Contact already exists."
                 complete = False
                 return (msg, complete)
             else:
