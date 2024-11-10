@@ -1,6 +1,12 @@
 {
     "configurations": [
         {
+            "name": "Run Module",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "assistant_bot"
+        },
+        {
             "name": "Run Book [file]",
             "type": "debugpy",
             "request": "launch",

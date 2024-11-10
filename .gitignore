@@ -9,4 +9,3 @@ build/
 dist/
 addressbook.pkl
 .assistant_bot_command_history
-launch.json
