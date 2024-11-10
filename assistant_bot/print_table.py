@@ -13,7 +13,7 @@ class PrintTable():
         for header in self.headers:
             table.add_column(header, style="magenta")
         for idx, row in enumerate(self.rows):
-            table.add_row(*list(map(lambda x: x.replace('None', '').replace('[', '\['), row)))
+            table.add_row(*list(map(lambda x: f"{x}".replace('None', '').replace('[', '\['), row)))
             if not self.without_empty_rows and idx != len(self.rows) - 1:
                 table.add_row(*list(map(lambda x: "", row)))
         console = Console()

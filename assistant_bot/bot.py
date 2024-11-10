@@ -13,7 +13,8 @@ from commands import CommandHello, CommandExit, CommandClose, \
     CommandAddEmail, CommandEditEmail, CommandDeleteEmail, \
     CommandAddNote, CommandEditNote, CommandDeleteNote, CommandAllNotes, CommandShowNote, CommandNoteExtractKeywords, \
     CommandFindByPhone, CommandFindByEmail, \
-    CommandNltkDownloaderRun
+    CommandNltkDownloaderRun, \
+    CommandBookInfo
 import store
 
 
@@ -29,11 +30,16 @@ address_command_list = [
 notes_command_list = [
         CommandAddNote(), CommandEditNote(), CommandDeleteNote(), CommandAllNotes(), CommandShowNote(), CommandNoteExtractKeywords()
         ]
-other_command_list = [CommandNltkDownloaderRun()]
+other_command_list = [
+        CommandNltkDownloaderRun(),
+        CommandBookInfo()
+        ]
 
 
 def get_help():
-    rows = [["help", "command [-h OR --help]", "Show a hint for the command."]]
+    rows = [
+        ["help", "command [-h OR --help]", "Show a hint for the command."],
+        ]
     all = common_command_list + address_command_list + notes_command_list + other_command_list
     for cmd in all:
         parser = get_parser(cmd)
@@ -104,7 +110,7 @@ def main():
                 (x for x in other_command_list if x.name == command), None)
                 if other_cmd:
                     cmd = other_cmd
-                    book = None
+                    book = [addressBook, notesBook]
 
         if cmd:
             msg, complete = parse_input(user_input, cmd, book)

@@ -2,6 +2,7 @@ from .user_command import UserCommand
 from .cmd_hello import CommandHello
 from .cmd_exit import CommandExit
 from .cmd_close import CommandClose
+from .cmd_book_info import CommandBookInfo
 from .cmd_contact.cmd_add_contact import CommandAddContact
 from .cmd_contact.cmd_edit_contact import CommandEditContact
 from .cmd_contact.cmd_delete_contact import CommandDeleteContact
@@ -33,6 +34,7 @@ from .cmd_ntlk_downloader_run import CommandNltkDownloaderRun
 
 __all__ = [
     'UserCommand',
+    'CommandBookInfo',
     'CommandHello',
     'CommandExit',
     'CommandClose',
