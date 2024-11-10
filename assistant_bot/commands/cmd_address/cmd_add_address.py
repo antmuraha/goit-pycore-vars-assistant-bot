@@ -1,32 +1,21 @@
 from ..user_command import UserCommand
 from record_contact import RecordContact
 from fields import FieldNameValueError, FieldAddressValueError
+from messages import Messages
 
 
 class CommandAddAddress(UserCommand):
     def __init__(self):
         self.name = "add-address"
         self.description = "Add an address to the contact."
-        self.pattern = "add-address [username] [address]"
-
-    def input_validation(self, params, book):
-        if len(params) == 0:
-            msg = self.get_enter_command_message()
-            complete = False
-            return (msg, complete)
-
-        if len(params) == 1:
-            msg = "Please enter an address."
-            complete = False
-            return (msg, complete)
+        self.args = [
+            {"name": "name", "help": Messages.HELP_FIELD_NAME.value, "type": str},
+            {"name": "address", "help": Messages.HELP_FIELD_ADDRESS.value, "type": str},
+        ]
 
     def execute(self, args, book):
-        error = self.input_validation(args, book)
-        if error:
-            return error
-
-        name = args[0]
-        address = " ".join(args[1:])
+        name = args.name
+        address = args.address
         
         try:
             exist_record = book.get(name)

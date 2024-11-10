@@ -4,6 +4,7 @@ from completer import completer, save_history_to_file
 from address_book import AddressBook
 from notes_book import NotesBook
 from print_table import PrintTable
+from parse_input import get_parser, get_help_first_line
 from commands import CommandHello, CommandExit, CommandClose, \
     CommandAddContact, CommandEditContact, CommandDeleteContact, CommandShowContact, CommandAllContacts, \
     CommandAddAddress, CommandEditAddress, CommandDeleteAddress, \
@@ -12,7 +13,8 @@ from commands import CommandHello, CommandExit, CommandClose, \
     CommandAddEmail, CommandEditEmail, CommandDeleteEmail, \
     CommandAddNote, CommandEditNote, CommandDeleteNote, CommandAllNotes, CommandShowNote, CommandNoteExtractKeywords, \
     CommandFindByPhone, CommandFindByEmail, \
-    CommandBooksInfo
+    CommandBooksInfo, \
+    CommandNltkDownloaderRun
 import store
 
 
@@ -28,15 +30,18 @@ address_command_list = [
 notes_command_list = [
         CommandAddNote(), CommandEditNote(), CommandDeleteNote(), CommandAllNotes(), CommandShowNote(), CommandNoteExtractKeywords()
         ]
+other_command_list = [CommandNltkDownloaderRun()]
 
 
 def get_help():
-    rows = []
-    all = common_command_list + address_command_list + notes_command_list
+    rows = [["help", "command [-h OR --help]", "Show a hint for the command"]]
+    all = common_command_list + address_command_list + notes_command_list + other_command_list
     for cmd in all:
-        exist = next((x for x in rows if x[0] == cmd.pattern), None)
+        parser = get_parser(cmd)
+        first_line = get_help_first_line(parser)
+        exist = next((x for x in rows if x[0] == first_line), None)
         if not exist:
-            rows.append([f"{cmd.name}", f"{cmd.pattern}", cmd.description])
+            rows.append([f"{cmd.name}", first_line, cmd.description])
     headers = ["Command", "Pattern", "Description"] 
     table = PrintTable(headers = headers, rows = rows, without_empty_rows=True)
     return table
@@ -44,11 +49,13 @@ def get_help():
 
 def get_all_commands():
     commands = ["help"]
-    all = common_command_list + address_command_list + notes_command_list
+    all = common_command_list + address_command_list + notes_command_list + other_command_list
     for cmd in all:
-        exist = next((x for x in commands if x == cmd.pattern), None)
+        parser = get_parser(cmd)
+        first_line = get_help_first_line(parser)
+        exist = next((x for x in commands if x == first_line), None)
         if not exist:
-            commands.append(cmd.pattern)
+            commands.append(first_line)
     return commands
 
 
@@ -69,7 +76,7 @@ def main():
             print("Please enter a command.")
             continue
 
-        command, *args = parse_input(user_input)
+        command, *args = user_input.lower().split()
 
         if command == "help":
             msg = get_help()
@@ -94,8 +101,14 @@ def main():
                     (x for x in notes_command_list if x.name == command), None)
                 book = notesBook
 
+                other_cmd = next(
+                (x for x in other_command_list if x.name == command), None)
+                if other_cmd:
+                    cmd = other_cmd
+                    book = None
+
         if cmd:
-            msg, complete = cmd.execute(args, book)
+            msg, complete = parse_input(user_input, cmd, book)
             if msg:
                 if isinstance(msg, PrintTable):
                     msg.show()

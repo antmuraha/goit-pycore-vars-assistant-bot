@@ -2,32 +2,21 @@ from address_book import AddressBook
 from ..user_command import UserCommand
 from record_contact import RecordContact
 from fields import FieldNameValueError, FieldBirthdayValueError
+from messages import Messages
 
 
 class CommandAddBirthday(UserCommand):
     def __init__(self):
         self.name = "add-birthday"
         self.description = "Add a birthday to the contact."
-        self.pattern = "add-birthday [username] [birthday]"
-
-    def input_validation(self, params, book):
-        if len(params) == 0:
-            msg = self.get_enter_command_message()
-            complete = False
-            return (msg, complete)
-
-        if len(params) == 1:
-            msg = "Please enter the contact's birthday."
-            complete = False
-            return (msg, complete)
+        self.args = [
+            {"name": "name", "help": Messages.HELP_FIELD_NAME.value, "type": str},
+            {"name": "birthday", "help": Messages.HELP_FIELD_BIRTHDAY.value, "type": str},
+        ]
 
     def execute(self, args, book: AddressBook):
-        error = self.input_validation(args, book)
-        if error:
-            return error
-
-        name = args[0]
-        birthday = args[1]
+        name = args.name
+        birthday = args.birthday
 
         try:
             exist_record = book.find_by_name(name)
