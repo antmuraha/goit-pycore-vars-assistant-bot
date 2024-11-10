@@ -29,6 +29,7 @@ from .cmd_note.cmd_show_note import CommandShowNote
 from .cmd_note.cmd_note_extract_keywords import CommandNoteExtractKeywords
 from .cmd_contact.cmd_find_by_phone import CommandFindByPhone
 from .cmd_contact.cmd_find_by_email import CommandFindByEmail
+from .cmd_ntlk_downloader_run import CommandNltkDownloaderRun
 
 __all__ = [
     'UserCommand',
@@ -62,4 +63,5 @@ __all__ = [
     'CommandNoteExtractKeywords',
     'CommandFindByPhone', 
     'CommandFindByEmail'
+    'CommandNltkDownloaderRun',
 ]

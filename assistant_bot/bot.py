@@ -12,7 +12,8 @@ from commands import CommandHello, CommandExit, CommandClose, \
     CommandAddPhone, CommandEditPhone, CommandDeletePhone, CommandShowPhones, \
     CommandAddEmail, CommandEditEmail, CommandDeleteEmail, \
     CommandAddNote, CommandEditNote, CommandDeleteNote, CommandAllNotes, CommandShowNote, CommandNoteExtractKeywords, \
-    CommandFindByPhone, CommandFindByEmail
+    CommandFindByPhone, CommandFindByEmail, \
+    CommandNltkDownloaderRun
 import store
 
 
@@ -28,11 +29,12 @@ address_command_list = [
 notes_command_list = [
         CommandAddNote(), CommandEditNote(), CommandDeleteNote(), CommandAllNotes(), CommandShowNote(), CommandNoteExtractKeywords()
         ]
+other_command_list = [CommandNltkDownloaderRun()]
 
 
 def get_help():
     rows = [["help", "command [-h OR --help]", "Show a hint for the command"]]
-    all = common_command_list + address_command_list + notes_command_list
+    all = common_command_list + address_command_list + notes_command_list + other_command_list
     for cmd in all:
         parser = get_parser(cmd)
         first_line = get_help_first_line(parser)
@@ -46,7 +48,7 @@ def get_help():
 
 def get_all_commands():
     commands = ["help"]
-    all = common_command_list + address_command_list + notes_command_list
+    all = common_command_list + address_command_list + notes_command_list + other_command_list
     for cmd in all:
         parser = get_parser(cmd)
         first_line = get_help_first_line(parser)
@@ -97,6 +99,12 @@ def main():
                 cmd = next(
                     (x for x in notes_command_list if x.name == command), None)
                 book = notesBook
+
+                other_cmd = next(
+                (x for x in other_command_list if x.name == command), None)
+                if other_cmd:
+                    cmd = other_cmd
+                    book = None
 
         if cmd:
             msg, complete = parse_input(user_input, cmd, book)
