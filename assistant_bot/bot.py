@@ -83,6 +83,10 @@ def main():
             msg.show()
             continue
 
+        # if command == "books-info":
+        #     CommandBooksInfo(addressBook, notesBook)
+        #     continue
+
         # Find the target class of the command
         book = None
         cmd = None
