@@ -17,14 +17,17 @@ class RecordNote:
     def __str__(self):
         keywords = list(map(lambda k: f"{k}", self.keywords))
         return f"Note text: {self.text} Keywords:{keywords}"
+    
+    def record_updated(self):
+        self.updated = datetime.now().strftime("%d.%m.%Y %H:%M:%S")
 
     def edit_text(self, new_text):
         self.text = FieldText(new_text)
-        self.updated = datetime.now().strftime("%d.%m.%Y %H:%M")
+        self.record_updated()
 
     def set_keywords(self, keywords: list[str]):
         new_keywords = []
         for word in keywords:
             new_keywords.append(FieldKeyword(word))
         self.keywords = new_keywords[:5]
-        self.updated = datetime.now().strftime("%d.%m.%Y %H:%M")
+        self.record_updated()
