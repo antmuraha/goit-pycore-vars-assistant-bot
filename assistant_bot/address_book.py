@@ -2,6 +2,7 @@ import typing
 from collections import UserDict
 from datetime import datetime, timedelta
 from record_contact import RecordContact
+from datetime import datetime
 
 
 # Define the type for a single person
@@ -82,7 +83,7 @@ class AddressBook(UserDict[RecordContact]):
                     year=self.today.year + 1)
 
             diff = (birthday_this_year - self.today).days
-            if diff < self.forward_days:
+            if diff <= number:
                 weekday = birthday_this_year.weekday()
                 if weekday + 1 > self.length_work_week:
                     days = self.length_week - weekday
@@ -92,6 +93,7 @@ class AddressBook(UserDict[RecordContact]):
                     "name": record.name.value,
                     "congratulation_date": birthday_this_year.strftime(self.date_format)
                 })
+                upcoming.sort(key=lambda person: datetime.strptime(person['congratulation_date'], "%d.%m.%Y"))
 
         return upcoming
     

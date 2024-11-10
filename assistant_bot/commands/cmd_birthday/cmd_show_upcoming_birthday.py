@@ -9,7 +9,6 @@ class CommandGetUpcomingBirthdays(UserCommand):
         self.name = "upcoming-birthdays"
         self.description = "Show upcoming birthdays."
         self.args = [
-            {"name": "name", "help": Messages.HELP_FIELD_NAME.value, "type": str},
             {"name": "days", "help": Messages.HELP_FIELD_BIRTHDAY_DAYS.value, "type": int, "default": 7, "nargs": "?"},
         ]
 
