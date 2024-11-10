@@ -1,6 +1,7 @@
 from address_book import AddressBook
 from ..user_command import UserCommand
 from fields import FieldNameValueError
+from messages import Messages
 
 
 class CommandShowBirthday(UserCommand):
@@ -8,19 +9,13 @@ class CommandShowBirthday(UserCommand):
         self.name = "show-birthday"
         self.description = "Show the contact's birthday."
         self.pattern = "show-birthday [username]"
+        self.args = [
+            {"name": "name", "help": Messages.HELP_FIELD_NAME.value, "type": str},
+        ]
 
-    def input_validation(self, params, book):
-        if len(params) == 0:
-            msg = self.get_enter_command_message()
-            complete = False
-            return (msg, complete)
 
     def execute(self, args, book: AddressBook):
-        error = self.input_validation(args, book)
-        if error:
-            return error
-
-        name = args[0]
+        name = args.name
 
         try:
             exist_record = book.find_by_name(name)

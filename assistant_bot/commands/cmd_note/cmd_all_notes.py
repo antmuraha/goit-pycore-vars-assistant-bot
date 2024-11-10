@@ -8,6 +8,7 @@ class CommandAllNotes(UserCommand):
         self.name = "all-notes"
         self.description = "Display all notes."
         self.pattern = "all-notes"
+        self.args = []
 
     def execute(self, args, book: NotesBook):
         all_notes = list(map(lambda n: f"{n}", book.values()))

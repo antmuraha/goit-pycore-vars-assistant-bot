@@ -9,6 +9,7 @@ class CommandAllContacts(UserCommand):
         self.name = "all-contacts"
         self.description = "Show all contacts in the address book."
         self.pattern = "all-contacts"
+        self.args = []
 
     def execute(self, args, book):
         if len(book) == 0:

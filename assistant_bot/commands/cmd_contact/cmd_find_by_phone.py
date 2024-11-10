@@ -2,27 +2,19 @@ from ..user_command import UserCommand
 from address_book import AddressBook
 from print_table import PrintTable
 from fields import FieldPhoneValueError
+from messages import Messages
 
 
 class CommandFindByPhone(UserCommand):
     def __init__(self):
         self.name = "find-by-phone"
         self.description = "Find a contact by the entered phone number."
-        self.pattern = "find-by-phone [phone]"
-
-    def input_validation(self, params):
-        if len(params) == 0:
-            msg = self.get_enter_command_message()
-            complete = False
-            return (msg, complete)
-        
+        self.args = [
+            {"name": "phone", "help": Messages.HELP_FIELD_PHONE.value, "type": str},
+        ]   
 
     def execute(self, args, book: AddressBook):
-        error = self.input_validation(args)
-        if error:
-            return error
-
-        phone = args[0]
+        phone = args.phone
 
         found_contacts = []
 

@@ -2,26 +2,18 @@ from ..user_command import UserCommand
 from address_book import AddressBook
 from print_table import PrintTable
 from fields import FieldEmailValueError
+from messages import Messages
 
 class CommandFindByEmail(UserCommand):
     def __init__(self):
         self.name = "find-by-email"
         self.description = "Find a contact by the entered email address."
-        self.pattern = "find-by-email [email]"
-
-    def input_validation(self, params):
-        if len(params) == 0:
-            msg = self.get_enter_command_message()
-            complete = False
-            return (msg, complete)
-        
+        self.args = [
+            {"name": "email", "help": Messages.HELP_FIELD_EMAIL.value, "type": str},
+        ]        
 
     def execute(self, args, book: AddressBook):
-        error = self.input_validation(args)
-        if error:
-            return error
-
-        email = args[0]
+        email = args.email
 
         found_contacts = []
 

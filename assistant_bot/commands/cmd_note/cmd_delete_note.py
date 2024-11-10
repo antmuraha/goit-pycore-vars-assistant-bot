@@ -1,25 +1,18 @@
 from ..user_command import UserCommand
 from fields import FieldTitleValueError
+from messages import Messages
 
 
 class CommandDeleteNote(UserCommand):
     def __init__(self):
         self.name = "delete-note"
         self.description = "Delete a note from the notebook."
-        self.pattern = "delete-note [title]" 
+        self.args = [
+             {"name": "title", "help": Messages.HELP_FIELD_TITLE.value, "type": str},
+        ]
 
-    def input_validation(self, params, book):
-        if len(params) == 0:
-            msg = self.get_enter_command_message()
-            complete = False
-            return (msg, complete)
-       
     def execute(self, args, book):
-        error = self.input_validation(args, book)
-        if error:
-            return error
-        
-        title = " ".join(args)
+        title = args.title
 
         try:
             exist_record = book.get(title)

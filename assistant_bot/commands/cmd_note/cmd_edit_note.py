@@ -2,26 +2,19 @@ from ..user_command import UserCommand
 from fields import FieldTitleValueError, FieldTextValueError
 from notes_book import NotesBook
 from text_editor import show_text_editor
+from messages import Messages
 
 
 class CommandEditNote(UserCommand):
     def __init__(self):
         self.name = "edit-note"
         self.description = "Edit the note's text."
-        self.pattern = "edit-note [title]"
-
-    def input_validation(self, params, book):
-        if len(params) == 0:
-            msg = self.get_enter_command_message()
-            complete = False
-            return (msg, complete)
+        self.args = [
+             {"name": "title", "help": Messages.HELP_FIELD_TITLE.value, "type": str},
+        ]
 
     def execute(self, args, book: NotesBook):
-        error = self.input_validation(args, book)
-        if error:
-            return error
-
-        title = " ".join(args)
+        title = args.title
 
         try:
             exist_record = book.find_by_title(title)

@@ -1,3 +1,4 @@
+from .user_command import UserCommand
 from .cmd_hello import CommandHello
 from .cmd_exit import CommandExit
 from .cmd_close import CommandClose
@@ -30,6 +31,7 @@ from .cmd_contact.cmd_find_by_phone import CommandFindByPhone
 from .cmd_contact.cmd_find_by_email import CommandFindByEmail
 
 __all__ = [
+    'UserCommand',
     'CommandHello',
     'CommandExit',
     'CommandClose',

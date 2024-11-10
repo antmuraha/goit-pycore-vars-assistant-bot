@@ -3,25 +3,18 @@ from record_note import RecordNote
 from notes_book import NotesBook
 from print_table import PrintTable
 from fields import FieldTitleValueError
+from messages import Messages
 
 class CommandShowNote(UserCommand):
     def __init__(self):
         self.name = "show-note"
         self.description = "Display a note."
-        self.pattern = "show-note [title]"
-
-    def input_validation(self, params, book):
-        if len(params) == 0:
-            msg = self.get_enter_command_message()
-            complete = False
-            return (msg, complete)
+        self.args = [
+             {"name": "title", "help": Messages.HELP_FIELD_TITLE.value, "type": str},
+        ]
 
     def execute(self, args, book: NotesBook):
-        result = self.input_validation(args, book)
-        if result:
-            return result
-
-        title = " ".join(args)
+        title = args.title
 
         exist_record = book.find_by_title(title)
         

@@ -2,32 +2,21 @@ from ..user_command import UserCommand
 from record_contact import RecordContact
 from fields import FieldName, FieldNameValueError
 from address_book import AddressBook
+from messages import Messages
 
 
 class CommandEditContact(UserCommand):
     def __init__(self):
         self.name = "edit-contact"
         self.description = "Edit the contact's name."
-        self.pattern = "edit-contact [username] [new_username]"
-
-    def input_validation(self, params, book):
-        if len(params) == 0:
-            msg = self.get_enter_command_message()
-            complete = False
-            return (msg, complete)
-
-        if len(params) == 1:
-            msg = "Please enter a new username."
-            complete = False
-            return (msg, complete)
+        self.args = [
+            {"name": "name", "help": Messages.HELP_FIELD_NAME.value, "type": str},
+            {"name": "new_name", "help": Messages.HELP_FIELD_NEW_NAME.value, "type": str},
+        ]
 
     def execute(self, args, book: AddressBook):
-        result = self.input_validation(args, book)
-        if result:
-            return result
-
-        name = args[0]
-        new_name = args[1]
+        name = args.name
+        new_name = args.new_name
 
         try:
             exist_record = book.find_by_name(name)

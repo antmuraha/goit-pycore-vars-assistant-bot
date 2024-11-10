@@ -2,6 +2,7 @@ from ..user_command import UserCommand
 from record_contact import RecordContact
 from fields import FieldNameValueError, FieldPhoneValueError
 from address_book import AddressBook
+from messages import Messages
 
 
 class CommandEditPhone(UserCommand):
@@ -9,31 +10,16 @@ class CommandEditPhone(UserCommand):
         self.name = "edit-phone"
         self.description = "Edit the phone."
         self.pattern = "edit-phone [username] [phone] [new_phone]"
-
-    def input_validation(self, params, book):
-        if len(params) == 0:
-            msg = self.get_enter_command_message()
-            complete = False
-            return (msg, complete)
-
-        if len(params) == 1:
-            msg = "Please enter a phone."
-            complete = False
-            return (msg, complete)
-        
-        if len(params) == 2:
-            msg = "Please enter a new phone."
-            complete = False
-            return (msg, complete)
+        self.args = [
+            {"name": "name", "help": Messages.HELP_FIELD_NAME.value, "type": str},
+            {"name": "phone", "help": Messages.HELP_FIELD_PHONE.value, "type": int},
+            {"name": "new_phone", "help": Messages.HELP_FIELD_NEW_PHONE.value, "type": int},
+        ]
 
     def execute(self, args, book: AddressBook):
-        error = self.input_validation(args, book)
-        if error:
-            return error
-
-        name = args[0]
-        phone = args[1]
-        new_phone = args[2]
+        name = args.name
+        phone = args.phone
+        new_phone = args.new_phone
 
         try:
             exist_record = book.find_by_name(name)
