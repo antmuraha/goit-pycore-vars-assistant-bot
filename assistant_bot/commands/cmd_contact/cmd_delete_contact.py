@@ -22,7 +22,7 @@ class CommandDeleteContact(UserCommand):
                 complete = False
                 return (msg, complete)
             
-            msg = "Contact not exist."
+            msg = "Contact doesn't exist."
             complete = False
             return (msg, complete)
         

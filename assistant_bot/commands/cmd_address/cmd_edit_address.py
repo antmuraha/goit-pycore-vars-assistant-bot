@@ -24,6 +24,11 @@ class CommandEditAddress(UserCommand):
                 msg = "Address updated."
                 complete = False
                 return (msg, complete)
+            
+            msg = "Contact doesn't exist."
+            complete = False
+            return (msg, complete)
+        
         except FieldAddressValueError as e:
             return (f"Invalid address value. {e}", False)
         except FieldNameValueError as e:

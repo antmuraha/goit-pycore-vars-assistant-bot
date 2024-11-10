@@ -27,5 +27,5 @@ class CommandEditEmail(UserCommand):
             return (msg, complete)
         except FieldNameValueError as e:
             return (f"Invalid name value. {e}", False)
-        except FieldEmailValueError:
+        except FieldEmailValueError as e:
             return (f"Invalid email value. {e}", False)

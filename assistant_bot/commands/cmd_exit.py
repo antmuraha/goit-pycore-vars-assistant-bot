@@ -4,7 +4,7 @@ from .user_command import UserCommand
 class CommandExit(UserCommand):
     def __init__(self):
         self.name = "exit"
-        self.description = "Exit from the program"
+        self.description = "Exit from the program."
         self.args = []
 
     def execute(self, args, book):
