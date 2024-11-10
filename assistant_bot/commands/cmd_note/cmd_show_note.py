@@ -29,7 +29,7 @@ class CommandShowNote(UserCommand):
             table = PrintTable(headers = headers, rows = rows)
             return (table, False)
 
-        msg = "Note does not exist"
+        msg = "Note doesn't exist."
         complete = False
         return (msg, complete)
    

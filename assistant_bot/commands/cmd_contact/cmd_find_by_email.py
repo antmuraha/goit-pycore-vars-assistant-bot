@@ -19,7 +19,7 @@ class CommandFindByEmail(UserCommand):
 
         try:
             for name, contact in book.items():
-                if (contact.email.value == email):
+                if contact.email is not None and str(contact.email) == email:
                     found_contacts.append(contact)
 
             if found_contacts:   

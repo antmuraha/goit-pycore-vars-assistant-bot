@@ -23,7 +23,7 @@ class CommandDeleteNote(UserCommand):
                 complete = False
                 return (msg, complete)
             
-            msg = "Note does not exist"
+            msg = "Note doesn't exist."
             complete = False
             return (msg, complete)
         except FieldTitleValueError as e:

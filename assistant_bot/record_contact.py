@@ -50,16 +50,20 @@ class RecordContact:
 
     def remove_phone(self, phone: str) -> bool:
         count = len(self.phones)
+        phone = str(phone)
+
         self.phones = list(filter(lambda p: p.value != phone, self.phones))
+
         self.record_updated()
         return len(self.phones) != count
-
+    
     def edit_phone(self, phone: FieldPhone, new_phone: FieldPhone):
         record = next(
-            (x for x in self.phones if x.value == phone), None)
+            (x for x in self.phones if x.value == str(phone)), None
+        )
 
         if record:
-            record.value = new_phone
+            record.value = FieldPhone(new_phone)   
 
         self.record_updated()
         return record
