@@ -12,7 +12,7 @@ from commands import CommandHello, CommandExit, CommandClose, \
     CommandAddPhone, CommandEditPhone, CommandDeletePhone, CommandShowPhones, \
     CommandAddEmail, CommandEditEmail, CommandDeleteEmail, \
     CommandAddNote, CommandEditNote, CommandDeleteNote, CommandAllNotes, CommandShowNote, CommandNoteExtractKeywords, \
-    CommandFindByPhone, CommandFindByEmail, \
+    CommandFindByPhone, CommandFindByEmail, CommandFindByAddress, \
     CommandNltkDownloaderRun, \
     CommandBookInfo
 import store
@@ -25,7 +25,8 @@ address_command_list = [
         CommandAddAddress(), CommandEditAddress(), CommandDeleteAddress(),
         CommandAddBirthday(), CommandDeleteBirthday(), CommandShowBirthday(), CommandGetUpcomingBirthdays(),
         CommandAddPhone(), CommandEditPhone(), CommandDeletePhone(), CommandShowPhones(),
-        CommandAddEmail(), CommandEditEmail(), CommandDeleteEmail(), CommandFindByPhone(), CommandFindByEmail()
+        CommandAddEmail(), CommandEditEmail(), CommandDeleteEmail(), \
+        CommandFindByPhone(), CommandFindByEmail(), CommandFindByAddress(), \
         ]
 notes_command_list = [
         CommandAddNote(), CommandEditNote(), CommandDeleteNote(), CommandAllNotes(), CommandShowNote(), CommandNoteExtractKeywords()

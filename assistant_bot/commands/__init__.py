@@ -30,6 +30,7 @@ from .cmd_note.cmd_show_note import CommandShowNote
 from .cmd_note.cmd_note_extract_keywords import CommandNoteExtractKeywords
 from .cmd_contact.cmd_find_by_phone import CommandFindByPhone
 from .cmd_contact.cmd_find_by_email import CommandFindByEmail
+from .cmd_contact.cmd_find_by_address import CommandFindByAddress
 from .cmd_ntlk_downloader_run import CommandNltkDownloaderRun
 
 __all__ = [
@@ -64,6 +65,7 @@ __all__ = [
     'CommandShowNote',
     'CommandNoteExtractKeywords',
     'CommandFindByPhone', 
-    'CommandFindByEmail'
+    'CommandFindByEmail',
+    'CommandFindByAddress',
     'CommandNltkDownloaderRun',
 ]

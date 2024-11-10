@@ -1,23 +1,24 @@
 from ..user_command import UserCommand
 from address_book import AddressBook
 from print_table import PrintTable
-from fields import FieldEmailValueError
+from fields import FieldPhoneValueError
 from messages import Messages
 
-class CommandFindByEmail(UserCommand):
+
+class CommandFindByAddress(UserCommand):
     def __init__(self):
-        self.name = "find-by-email"
-        self.description = "Find a contact by the entered email address."
+        self.name = "find-by-address"
+        self.description = "Find a contact by the entered address."
         self.args = [
-            {"name": "email", "help": Messages.HELP_FIELD_EMAIL.value, "type": str},
-        ]        
+            {"name": "address", "help": Messages.HELP_FIELD_ADDRESS.value, "type": str},
+        ]   
 
     def execute(self, args, book: AddressBook):
-        email = args.email
+        address = args.address
 
         found_contacts = []
         for name, contact in book.items():
-            if contact.email is not None and email in str(contact.email):
+            if contact.address is not None and address in str(contact.address):
                 found_contacts.append(contact)
 
         if found_contacts:   
@@ -35,6 +36,6 @@ class CommandFindByEmail(UserCommand):
             
             return (None, False)
 
-        msg = "No contacts found matching the provided email."
+        msg = "No contacts found matching the provided address."
         complete = False
         return (msg, complete)

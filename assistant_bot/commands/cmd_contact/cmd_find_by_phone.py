@@ -16,31 +16,22 @@ class CommandFindByPhone(UserCommand):
     def execute(self, args, book: AddressBook):
         phone = args.phone
 
-        found_contacts = []
+        rows = []
+        for name, contact in book.items():
+            if any(str(phone) in str(ph.value) for ph in contact.phones):
+                rows.append([
+                    f"{contact.name}",
+                    ", ".join(contact.show_phones()),
+                    f"{contact.email}",
+                    f"{contact.address}",
+                    f"{contact.birthday}"
+                    ])
 
-        try:
-            for name, contact in book.items():
-                if any(ph.value == phone for ph in contact.phones):
-                    found_contacts.append(contact)
+        if len(rows):
+            headers=["Name", "Phone", "Email", "Address", "Birthday"]
+            table = PrintTable(headers = headers, rows = rows)
+            return (table, False)
 
-            if found_contacts:
-                for contact in found_contacts:
-                    headers=["Name", "Phone", "Email", "Address", "Birthday"]
-                    rows = [[
-                        f"{contact.name}",
-                        ", ".join(contact.show_phones()),
-                        f"{contact.email}",
-                        f"{contact.address}",
-                        f"{contact.birthday}"
-                        ]]
-                    table = PrintTable(headers = headers, rows = rows)
-                    table.show()
-                
-                return (None, False)
-
-            msg = "No contacts found matching the provided phone number."
-            complete = False
-            return (msg, complete)
-
-        except FieldPhoneValueError as e:
-            return (f"Invalid email value. {e}", False)
+        msg = "No contacts found matching the provided phone number."
+        complete = False
+        return (msg, complete)
