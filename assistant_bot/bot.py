@@ -31,7 +31,7 @@ notes_command_list = [
 
 
 def get_help():
-    rows = []
+    rows = [["help", "command [-h OR --help]", "Show a hint for the command"]]
     all = common_command_list + address_command_list + notes_command_list
     for cmd in all:
         parser = get_parser(cmd)

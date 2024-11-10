@@ -30,11 +30,12 @@ def get_help_first_line(parser: argparse.ArgumentParser):
 
 
 def parse_input(user_input: str, cmd: UserCommand, book) -> tuple[str | PrintTable, bool]:
+    user_input = user_input.strip()
     parser = get_parser(cmd)
-    first_line = get_help_first_line(parser)
 
-    if f"{user_input.strip()} -h" == cmd.name or f"{user_input.strip()} --help" == cmd.name:
+    if user_input == f"{cmd.name} -h" or user_input == f"{cmd.name} --help":
         parser.print_help()
+        return ("", False)
 
     try:
         arguments = shlex.split(user_input)
