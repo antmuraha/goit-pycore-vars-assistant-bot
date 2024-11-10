@@ -6,7 +6,6 @@ class CommandDeleteEmail(UserCommand):
     def __init__(self):
         self.name = "delete-email"
         self.description = "Delete a contact's email."
-        self.pattern = "delete-email [username]"
         self.args = [
             {"name": "name", "help": Messages.HELP_FIELD_NAME.value, "type": str},
         ]

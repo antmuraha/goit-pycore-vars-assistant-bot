@@ -8,7 +8,6 @@ class CommandEditAddress(UserCommand):
     def __init__(self):
         self.name = "edit-address"
         self.description = "Edit the contact's address."
-        self.pattern = "edit-address [username] [new_address]"
         self.args = [
             {"name": "name", "help": Messages.HELP_FIELD_NAME.value, "type": str},
             {"name": "address", "help": Messages.HELP_FIELD_ADDRESS.value, "type": str},

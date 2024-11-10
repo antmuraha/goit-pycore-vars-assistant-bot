@@ -8,7 +8,6 @@ class CommandShowContact(UserCommand):
     def __init__(self):
         self.name = "show-contact"
         self.description = "Show the contact's details."
-        self.pattern = "show-contact [username]"
         self.args = [
             {"name": "name", "help": Messages.HELP_FIELD_NAME.value, "type": str},
         ]

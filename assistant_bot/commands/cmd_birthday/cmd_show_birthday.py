@@ -8,7 +8,6 @@ class CommandShowBirthday(UserCommand):
     def __init__(self):
         self.name = "show-birthday"
         self.description = "Show the contact's birthday."
-        self.pattern = "show-birthday [username]"
         self.args = [
             {"name": "name", "help": Messages.HELP_FIELD_NAME.value, "type": str},
         ]

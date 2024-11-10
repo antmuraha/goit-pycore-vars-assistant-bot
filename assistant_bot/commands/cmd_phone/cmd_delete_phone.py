@@ -9,7 +9,6 @@ class CommandDeletePhone(UserCommand):
     def __init__(self):
         self.name = "delete-phone"
         self.description = "Delete the phone."
-        self.pattern = "delete-phone [username] [phone]"
         self.args = [
             {"name": "name", "help": Messages.HELP_FIELD_NAME.value, "type": str},
             {"name": "phone", "help": Messages.HELP_FIELD_PHONE.value, "type": int},

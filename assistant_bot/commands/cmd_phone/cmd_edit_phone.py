@@ -9,7 +9,6 @@ class CommandEditPhone(UserCommand):
     def __init__(self):
         self.name = "edit-phone"
         self.description = "Edit the phone."
-        self.pattern = "edit-phone [username] [phone] [new_phone]"
         self.args = [
             {"name": "name", "help": Messages.HELP_FIELD_NAME.value, "type": str},
             {"name": "phone", "help": Messages.HELP_FIELD_PHONE.value, "type": int},

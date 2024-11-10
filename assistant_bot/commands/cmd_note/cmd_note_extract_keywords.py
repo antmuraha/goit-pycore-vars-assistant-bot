@@ -10,7 +10,6 @@ class CommandNoteExtractKeywords(UserCommand):
     def __init__(self):
         self.name = "note-extract-keywords"
         self.description = "Extract note keywords using NTLK (Natural Language Toolkit)"
-        self.pattern = "note-extract-keywords [title] [-w OR --write]"
         self.args = [
              {"name": "title", "help": Messages.HELP_FIELD_TITLE.value, "type": str},
              {"name": "--write", "help": Messages.HELP_FIELD_NOTE_KEYWORDS.value, "type": str, "default": False, "nargs": "?"},
