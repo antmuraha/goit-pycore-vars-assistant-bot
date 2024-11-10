@@ -2,32 +2,21 @@ from ..user_command import UserCommand
 from record_contact import RecordContact
 from fields import FieldNameValueError, FieldPhoneValueError
 from address_book import AddressBook
+from messages import Messages
 
 
 class CommandDeletePhone(UserCommand):
     def __init__(self):
         self.name = "delete-phone"
         self.description = "Delete the phone."
-        self.pattern = "delete-phone [username] [phone]" 
-
-    def input_validation(self, params, book):
-        if len(params) == 0:
-            msg = self.get_enter_command_message()
-            complete = False
-            return (msg, complete)
-        
-        if len(params) == 1:
-            msg = "Please enter a phone."
-            complete = False
-            return (msg, complete)
+        self.args = [
+            {"name": "name", "help": Messages.HELP_FIELD_NAME.value, "type": str},
+            {"name": "phone", "help": Messages.HELP_FIELD_PHONE.value, "type": int},
+        ]
 
     def execute(self, args, book: AddressBook):
-        error = self.input_validation(args, book)
-        if error:
-            return error
-
-        name = args[0]
-        phone = args[1]
+        name = args.name
+        phone = args.phone
 
         try:
             exist_record = book.find_by_name(name)

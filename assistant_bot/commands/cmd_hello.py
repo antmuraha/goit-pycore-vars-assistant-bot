@@ -5,7 +5,7 @@ class CommandHello(UserCommand):
     def __init__(self):
         self.name = "hello"
         self.description = "A greeting message"
-        self.pattern = "hello"
+        self.args = []
 
     def execute(self, args, book):
         msg = "How can I help you?"

@@ -7,7 +7,7 @@ class CommandAllNotes(UserCommand):
     def __init__(self):
         self.name = "all-notes"
         self.description = "Display all notes."
-        self.pattern = "all-notes"
+        self.args = []
 
     def execute(self, args, book: NotesBook):
         all_notes = list(map(lambda n: f"{n}", book.values()))
@@ -38,7 +38,7 @@ class CommandAllContacts(UserCommand):
     def __init__(self):
         self.name = "all-contacts"
         self.description = "Show all contacts in the address book."
-        self.pattern = "all-contacts"
+        self.args = []
 
     def execute(self, args, book):
         if len(book) == 0:

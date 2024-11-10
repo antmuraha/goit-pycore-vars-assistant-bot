@@ -8,8 +8,9 @@ class FieldPhone(Field):
     '''
 
     def validation(self, value: str) -> str:
+        value = f"{value}"
         regPhone = r"\d{10}"
-        if type(value) != str or not re.fullmatch(regPhone, value):
+        if type(value) != str or not re.fullmatch(regPhone, f"{value}"):
             raise FieldPhoneValueError
 
         return value

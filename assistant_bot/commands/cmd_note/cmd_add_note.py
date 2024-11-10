@@ -2,27 +2,19 @@ from ..user_command import UserCommand
 from notes_book import NotesBook
 from record_contact import RecordContact
 from fields import FieldTitleValueError, FieldTextValueError
-
 from text_editor import show_text_editor
+from messages import Messages
 
 class CommandAddNote(UserCommand):
     def __init__(self):
         self.name = "add-note"
         self.description = "Add a note to the notebook."
-        self.pattern = "add-note [title]"
-
-    def input_validation(self, params, book):
-        if len(params) == 0:
-            msg = self.get_enter_command_message()
-            complete = False
-            return (msg, complete)
+        self.args = [
+             {"name": "title", "help": Messages.HELP_FIELD_TITLE.value, "type": str},
+        ]
 
     def execute(self, args, book: NotesBook):
-        error = self.input_validation(args, book)
-        if error:
-            return error
-
-        title = " ".join(args)
+        title = args.title
 
         record = book.find_by_title(title)
         if record:

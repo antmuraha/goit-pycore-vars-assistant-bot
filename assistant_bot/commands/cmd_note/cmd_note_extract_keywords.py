@@ -3,28 +3,22 @@ from fields import FieldTitleValueError, FieldTextValueError, FieldKeywordValueE
 from notes_book import NotesBook
 from extract_keywords import extract_keywords
 from print_table import PrintTable
+from messages import Messages
 
 
 class CommandNoteExtractKeywords(UserCommand):
     def __init__(self):
         self.name = "note-extract-keywords"
         self.description = "Extract note keywords using NTLK (Natural Language Toolkit)"
-        self.pattern = "note-extract-keywords [title] [-w OR --write]"
+        self.args = [
+             {"name": "title", "help": Messages.HELP_FIELD_TITLE.value, "type": str},
+             {"name": "--write", "help": Messages.HELP_FIELD_NOTE_KEYWORDS.value, "type": str, "default": False, "nargs": "?"},
+        ]
 
-    def input_validation(self, params, book):
-        if len(params) == 0:
-            msg = self.get_enter_command_message()
-            complete = False
-            return (msg, complete)
 
     def execute(self, args, book: NotesBook):
-        error = self.input_validation(args, book)
-        if error:
-            return error
-
-        title = " ".join(list(map(lambda x: "" if (x == '-w') or (x == '--write') else x,args)))
-        flags = args[1:]
-        write_keywords = ('-w' in flags) or ('--write' in flags)
+        title = args.title
+        write_keywords = args.write
 
         try:
             exist_record = book.get(title)

@@ -1,30 +1,19 @@
 from ..user_command import UserCommand
 from fields import FieldNameValueError, FieldEmailValueError
+from messages import Messages
 
 class CommandEditEmail(UserCommand):
     def __init__(self):
         self.name = "edit-email"
         self.description = "Edit the email of the contact."
-        self.pattern = "edit-email [username] [email]"
-
-    def input_validation(self, params):
-        if len(params) == 0:
-            msg = self.get_enter_command_message()
-            complete = False
-            return (msg, complete)
-        
-        if len(params) == 1:
-            msg = "Please enter a new email."
-            complete = False
-            return (msg, complete)
+        self.args = [
+            {"name": "name", "help": Messages.HELP_FIELD_NAME.value, "type": str},
+            {"name": "new_email", "help": Messages.HELP_FIELD_NEW_EMAIL.value, "type": str},
+        ]
 
     def execute(self, args, book):
-        error = self.input_validation(args)
-        if error:
-            return error
-
-        name = args[0]
-        new_email = args[1]
+        name = args.name
+        new_email = args.new_email
 
         try:
             exist_record = book.get(name)
