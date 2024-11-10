@@ -1,5 +1,5 @@
 from .user_command import UserCommand
-from print_table import PrintTable
+from ..print_table import PrintTable
 
 
 class CommandBooksInfo(UserCommand):
@@ -23,5 +23,6 @@ class CommandBooksInfo(UserCommand):
         table = PrintTable(headers = headers, rows = rows)
         complete = False
         return (table, complete)
+    
 
  

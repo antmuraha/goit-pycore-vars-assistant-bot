@@ -18,7 +18,7 @@ from commands import CommandHello, CommandExit, CommandClose, \
 import store
 
 
-common_command_list = [CommandHello(), CommandExit(), CommandClose(), CommandBooksInfo()]
+common_command_list = [CommandHello(), CommandExit(), CommandClose()]
 
 address_command_list = [
         CommandAddContact(), CommandEditContact(), CommandDeleteContact(), CommandShowContact(), CommandAllContacts(),
@@ -31,11 +31,12 @@ notes_command_list = [
         CommandAddNote(), CommandEditNote(), CommandDeleteNote(), CommandAllNotes(), CommandShowNote(), CommandNoteExtractKeywords()
         ]
 other_command_list = [CommandNltkDownloaderRun()]
+# books_command_list = [CommandBooksInfo()]
 
 
 def get_help():
     rows = [["help", "command [-h OR --help]", "Show a hint for the command"]]
-    all = common_command_list + address_command_list + notes_command_list + other_command_list
+    all = common_command_list + address_command_list + notes_command_list + other_command_list + books_command_list
     for cmd in all:
         parser = get_parser(cmd)
         first_line = get_help_first_line(parser)
@@ -49,7 +50,7 @@ def get_help():
 
 def get_all_commands():
     commands = ["help"]
-    all = common_command_list + address_command_list + notes_command_list + other_command_list
+    all = common_command_list + address_command_list + notes_command_list + other_command_list + books_command_list
     for cmd in all:
         parser = get_parser(cmd)
         first_line = get_help_first_line(parser)
@@ -84,7 +85,7 @@ def main():
             continue
 
         # if command == "books-info":
-        #     CommandBooksInfo(addressBook, notesBook)
+        #     books_command_list[0](addressBook, notesBook)
         #     continue
 
         # Find the target class of the command
