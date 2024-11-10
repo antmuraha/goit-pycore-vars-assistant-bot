@@ -1,6 +1,8 @@
 import nltk
 from rake_nltk import Rake
 
+def run_nltk_downloader():
+    nltk.download()
 
 def check_and_download_resources():
     try:
